@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-<head>
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -210,7 +210,7 @@
 and <a href="https://github.com/BlackrockDigital/startbootstrap-clean-blog-jekyll">Clean Blog Jekyll Theme</a>.</p>
 <p>These two upstream projects have done awesome jobs to create a blog theme, what I&rsquo;m doing here is porting it to Hugo, of which I like the simplicity and the much faster compiling speed. Some other features which I think could be useful, such as site search with algolia and proxy for Disqus access in China, have also been built in the CleanWhite theme. Other fancy features of upstream projects are not supported by this Hugo theme, I&rsquo;d like to make it as simple as possible and only focus on blog purpose, at least for now.
 While I created this theme, I followed the Hugo theme best practice and tried to make every part of the template as a replaceable partial html, so it could be much easier for you to make your customization based on it.</p>
-<h2 id="screenshots">Screenshots</h2>
+<h1 id="screenshots">Screenshots</h1>
 <p><strong>Home</strong>
 
   <img src="/img/fullscreenshot.png" alt="screenshot">
@@ -236,7 +236,7 @@ While I created this theme, I followed the Hugo theme best practice and tried to
   <img src="/img/rewards.png" alt="screenshot">
 
 </p>
-<h2 id="quick-start">Quick Start</h2>
+<h1 id="quick-start">Quick Start</h1>
 <p>Go to the directory where you have your Hugo site and run:</p>
 <pre tabindex="0"><code>$ mkdir themes
 $ cd themes
@@ -249,13 +249,13 @@ $ git submodule add https://github.com/zhaohuabing/hugo-theme-cleanwhite.git the
 </code></pre><p>Now enter <a href="http://localhost:1313"><code>localhost:1313</code></a> in the address bar of your browser.</p>
 <p>If you start from scratch, there is a working Hugo site configured with the CleanWhite theme in the <a href="https://github.com/zhaohuabing/hugo-theme-cleanwhite/tree/master/exampleSite">exampleSite</a> directory.  You can use it as a starting point for your site.</p>
 <p>For more information read the official <a href="https://gohugo.io/overview/installing/">setup guide</a> of Hugo</p>
-<h2 id="configuration">Configuration</h2>
+<h1 id="configuration">Configuration</h1>
 <p>First, let&rsquo;s take a look at the <a href="https://github.com/zhaohuabing/hugo-cleanwhite-theme/tree/master/exampleSite/config.toml">config.toml</a>. It will be useful to learn how to customize your site. Feel free to play around with the settings.</p>
-<h3 id="comments">Comments</h3>
+<h1 id="comments">Comments</h1>
 <p>The optional comments system is powered by <a href="https://disqus.com">Disqus</a>. If you want to enable comments, create an account in Disqus and write down your shortname.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span>disqusShortname = <span style="color:#f1fa8c">&#34;your-disqus-short-name&#34;</span>
 </span></span></code></pre></div><p>You can disable the comments system by leaving the <code>disqusShortname</code> empty.</p>
-<h3 id="disqus-in-china">Disqus in China</h3>
+<h1 id="disqus-in-china">Disqus in China</h1>
 <p>Disqus is inaccessible in China. To get it to work, we can set up a proxy with <a href="https://github.com/zhaohuabing/disqus-php-api">disqus-php-api</a> in a host which sets between the client browser and the Disqus server. The idea is that if Disqus can be reached in the guest network, the blog page will show the original Disqus comments UI, otherwise, it will downgrade and use the proxy to access the Disqus, the UI will be a little different, but the visitors can still write their comments on the page.</p>
 <p>The client side java script has already been integrated to CleanWhite them, but you need to set up a proxy server yourself.</p>
 <p>The proxy is written in php, which can be found here: <a href="https://github.com/zhaohuabing/disqus-php-api/tree/master/api">https://github.com/zhaohuabing/disqus-php-api/tree/master/api</a></p>
@@ -315,17 +315,6 @@ algolia_apiKey = {{ YOUR_SEARCH_ONLY_KEY }}
 
                 
 
-                
-                <hr>
-                <ul class="pager">
-                    
-                    <li class="previous">
-                        <a href="/2018/06/04/introducing-the-istio-v1alpha3-routing-api/" data-toggle="tooltip" data-placement="top" title="Istio v1aplha3 routing API介绍(译文）">&larr;
-                            Previous Post</a>
-                    </li>
-                    
-                    
-                </ul>
                 
 
                 
@@ -401,10 +390,6 @@ algolia_apiKey = {{ YOUR_SEARCH_ONLY_KEY }}
                     <div class="tags">
                         
                         
-                        
-                        <a href="/tags/istio" title="istio">
-                            istio
-                        </a>
                         
                         
                     </div>
@@ -564,19 +549,6 @@ algolia_apiKey = {{ YOUR_SEARCH_ONLY_KEY }}
 
 
 
-
-
-<a id="search-btn" style="display: inline-block;" href="javascript:void(0);">
-    <span class="icon-search">捜</span>
-</a>
-
-<div id="fastSearch">
-    <input id="searchInput" tabindex="0">
-    <ul id="searchResults">
-    </ul>
-</div>
-<script src="/js/fuse.min.js"></script> 
-<script src="/js/fastsearch.js"></script>
 
 </body>
 </html>
