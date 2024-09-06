@@ -260,8 +260,110 @@
 <h1 id="普通带权值轮询">普通带权值轮询</h1>
 <p>普通带权轮询就比随机值的要好多了，它可以精确的保证每个资源承受的请求达到预期。</p>
 <p><strong>代码实现</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">class</span> <span style="color:#50fa7b">WeightLoadBalance</span> {  
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">private</span> <span style="color:#8be9fd;font-style:italic">static</span> <span style="color:#8be9fd;font-style:italic">final</span> Map<span style="color:#ff79c6">&lt;</span>Integer, Integer<span style="color:#ff79c6">&gt;</span> services <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> ConcurrentHashMap<span style="color:#ff79c6">&lt;&gt;</span>();  
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">private</span> <span style="color:#8be9fd;font-style:italic">static</span> <span style="color:#8be9fd">int</span> totalWeight;  
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">static</span> {  
+</span></span><span style="display:flex;"><span>        services.<span style="color:#50fa7b">put</span>(1, 1);  
+</span></span><span style="display:flex;"><span>        services.<span style="color:#50fa7b">put</span>(2, 3);  
+</span></span><span style="display:flex;"><span>        services.<span style="color:#50fa7b">put</span>(3, 2);  
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">for</span>(Map.<span style="color:#50fa7b">Entry</span><span style="color:#ff79c6">&lt;</span>Integer, Integer<span style="color:#ff79c6">&gt;</span> service : services.<span style="color:#50fa7b">entrySet</span>()){  
+</span></span><span style="display:flex;"><span>            totalWeight <span style="color:#ff79c6">+=</span> service.<span style="color:#50fa7b">getValue</span>();  
+</span></span><span style="display:flex;"><span>        }  
+</span></span><span style="display:flex;"><span>    }  
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">private</span> <span style="color:#8be9fd;font-style:italic">static</span> <span style="color:#8be9fd">int</span> currentIndex <span style="color:#ff79c6">=</span> 0;  
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">static</span> <span style="color:#8be9fd">int</span> <span style="color:#50fa7b">loadBalance</span>(){  
+</span></span><span style="display:flex;"><span>        currentIndex <span style="color:#ff79c6">%=</span> totalWeight;  
+</span></span><span style="display:flex;"><span>        <span style="color:#8be9fd">int</span> currentWeight <span style="color:#ff79c6">=</span> 0;  
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">for</span>(Map.<span style="color:#50fa7b">Entry</span><span style="color:#ff79c6">&lt;</span>Integer, Integer<span style="color:#ff79c6">&gt;</span> service : services.<span style="color:#50fa7b">entrySet</span>()){  
+</span></span><span style="display:flex;"><span>            currentWeight <span style="color:#ff79c6">+=</span> service.<span style="color:#50fa7b">getValue</span>();  
+</span></span><span style="display:flex;"><span>            <span style="color:#ff79c6">if</span>(currentIndex <span style="color:#ff79c6">&lt;</span> currentWeight){  
+</span></span><span style="display:flex;"><span>                currentIndex <span style="color:#ff79c6">++</span>;  
+</span></span><span style="display:flex;"><span>                <span style="color:#ff79c6">return</span> service.<span style="color:#50fa7b">getKey</span>();  
+</span></span><span style="display:flex;"><span>            }  
+</span></span><span style="display:flex;"><span>        }  
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">return</span> services.<span style="color:#50fa7b">entrySet</span>().<span style="color:#50fa7b">iterator</span>().<span style="color:#50fa7b">next</span>().<span style="color:#50fa7b">getValue</span>();  
+</span></span><span style="display:flex;"><span>    }  
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">static</span> <span style="color:#8be9fd">void</span> <span style="color:#50fa7b">main</span>(String<span style="color:#ff79c6">[]</span> args) {  
+</span></span><span style="display:flex;"><span>        <span style="color:#8be9fd">int</span><span style="color:#ff79c6">[]</span> count <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> <span style="color:#8be9fd">int</span><span style="color:#ff79c6">[</span>4<span style="color:#ff79c6">]</span>;  
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">for</span>(<span style="color:#8be9fd">int</span> i<span style="color:#ff79c6">=</span>0;i<span style="color:#ff79c6">&lt;</span>100;i<span style="color:#ff79c6">++</span>){  
+</span></span><span style="display:flex;"><span>            count<span style="color:#ff79c6">[</span>loadBalance()<span style="color:#ff79c6">]++</span>;  
+</span></span><span style="display:flex;"><span>        }  
+</span></span><span style="display:flex;"><span>        System.<span style="color:#50fa7b">out</span>.<span style="color:#50fa7b">println</span>(Arrays.<span style="color:#50fa7b">toString</span>(count));  
+</span></span><span style="display:flex;"><span>    }  
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>但是普通带权值轮询会有连续请求同一个资源的情况，例如：</p>
+<p>A（权值5）、B（权值3）、C（权值2），就会出现：</p>
+<p><code>A-A-A-A-A-B-B-B-C-C</code></p>
+<p>连续请求了五次的A资源，请求较集中。</p>
+<p>而平滑带权值轮询就解决了这个问题。</p>
 <h1 id="平滑带权值轮询">平滑带权值轮询</h1>
-
+<p>接上，由于普通带权轮询负载均衡导致的连续请求同一个服务，导致请求不能分散。而使用平滑轮询后，请求的顺序变为了这样：</p>
+<p><code>A-A-B-C-A-A-B-C-A-B</code></p>
+<p>这样就将请求同一资源的请求分散开了，避免大量相同的请求堆集在一起请求同一个。</p>
+<p><strong>实现步骤</strong></p>
+<ol>
+<li>每个资源有一个权值和当前权值，当前权值初始化为0</li>
+<li>.每次请求时每个资源的当前权值变为当前权值和权值的和（currentWeight += weight)</li>
+<li>选择权值最大的一个资源，然后将此资源的当前权值减掉总权值（currentWeight -= total Weight（totalWeight表示原始权制的和））</li>
+</ol>
+<p><strong>代码实现</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">class</span> <span style="color:#50fa7b">SmoothWeightLoadBalance</span> {  
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">private</span> <span style="color:#8be9fd;font-style:italic">static</span> <span style="color:#8be9fd;font-style:italic">final</span> Map<span style="color:#ff79c6">&lt;</span>Integer, Integer<span style="color:#ff79c6">&gt;</span> services <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> ConcurrentHashMap<span style="color:#ff79c6">&lt;&gt;</span>();  
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">private</span> <span style="color:#8be9fd;font-style:italic">static</span> <span style="color:#8be9fd">int</span> totalWeight;  
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">private</span> <span style="color:#8be9fd;font-style:italic">static</span> <span style="color:#8be9fd;font-style:italic">final</span> Map<span style="color:#ff79c6">&lt;</span>Integer, Integer<span style="color:#ff79c6">&gt;</span> currentWeights <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> ConcurrentHashMap<span style="color:#ff79c6">&lt;&gt;</span>();  
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">static</span> {  
+</span></span><span style="display:flex;"><span>        services.<span style="color:#50fa7b">put</span>(1, 5);  
+</span></span><span style="display:flex;"><span>        services.<span style="color:#50fa7b">put</span>(2, 3);  
+</span></span><span style="display:flex;"><span>        services.<span style="color:#50fa7b">put</span>(3, 2);  
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">for</span>(Map.<span style="color:#50fa7b">Entry</span><span style="color:#ff79c6">&lt;</span>Integer, Integer<span style="color:#ff79c6">&gt;</span> service : services.<span style="color:#50fa7b">entrySet</span>()){  
+</span></span><span style="display:flex;"><span>            totalWeight <span style="color:#ff79c6">+=</span> service.<span style="color:#50fa7b">getValue</span>();  
+</span></span><span style="display:flex;"><span>        }  
+</span></span><span style="display:flex;"><span>        currentWeights.<span style="color:#50fa7b">put</span>(1, 0);  
+</span></span><span style="display:flex;"><span>        currentWeights.<span style="color:#50fa7b">put</span>(2, 0);  
+</span></span><span style="display:flex;"><span>        currentWeights.<span style="color:#50fa7b">put</span>(3, 0);  
+</span></span><span style="display:flex;"><span>    }  
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">static</span> <span style="color:#8be9fd">int</span> <span style="color:#50fa7b">loadBalance</span>() {  
+</span></span><span style="display:flex;"><span>        <span style="color:#8be9fd">int</span> serviceId <span style="color:#ff79c6">=</span> services.<span style="color:#50fa7b">entrySet</span>().<span style="color:#50fa7b">iterator</span>().<span style="color:#50fa7b">next</span>().<span style="color:#50fa7b">getKey</span>();  
+</span></span><span style="display:flex;"><span>        <span style="color:#8be9fd">int</span> maxWeight <span style="color:#ff79c6">=</span> 0;  
+</span></span><span style="display:flex;"><span>        <span style="color:#6272a4">// 找出权值最大资源  </span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">for</span>(Map.<span style="color:#50fa7b">Entry</span><span style="color:#ff79c6">&lt;</span>Integer,Integer<span style="color:#ff79c6">&gt;</span> service : services.<span style="color:#50fa7b">entrySet</span>()) {  
+</span></span><span style="display:flex;"><span>            <span style="color:#6272a4">// 计算出现有权值并更新  </span>
+</span></span><span style="display:flex;"><span>            <span style="color:#8be9fd">int</span> currentWeight <span style="color:#ff79c6">=</span> currentWeights.<span style="color:#50fa7b">get</span>(service.<span style="color:#50fa7b">getKey</span>()) <span style="color:#ff79c6">+</span> service.<span style="color:#50fa7b">getValue</span>();  
+</span></span><span style="display:flex;"><span>            currentWeights.<span style="color:#50fa7b">put</span>(service.<span style="color:#50fa7b">getKey</span>(), currentWeight);  
+</span></span><span style="display:flex;"><span>            <span style="color:#6272a4">// 最大权值  </span>
+</span></span><span style="display:flex;"><span>            <span style="color:#ff79c6">if</span>(currentWeight <span style="color:#ff79c6">&gt;</span> maxWeight){  
+</span></span><span style="display:flex;"><span>                serviceId <span style="color:#ff79c6">=</span> service.<span style="color:#50fa7b">getKey</span>();  
+</span></span><span style="display:flex;"><span>                maxWeight <span style="color:#ff79c6">=</span> currentWeight;  
+</span></span><span style="display:flex;"><span>            }  
+</span></span><span style="display:flex;"><span>        }  
+</span></span><span style="display:flex;"><span>        <span style="color:#6272a4">// 更新最大权值  </span>
+</span></span><span style="display:flex;"><span>        currentWeights.<span style="color:#50fa7b">put</span>(serviceId, currentWeights.<span style="color:#50fa7b">get</span>(serviceId) <span style="color:#ff79c6">-</span> totalWeight);  
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">return</span> serviceId;  
+</span></span><span style="display:flex;"><span>    }  
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">static</span> <span style="color:#8be9fd">void</span> <span style="color:#50fa7b">main</span>(String<span style="color:#ff79c6">[]</span> args) {  
+</span></span><span style="display:flex;"><span>        <span style="color:#8be9fd">int</span><span style="color:#ff79c6">[]</span> count <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> <span style="color:#8be9fd">int</span><span style="color:#ff79c6">[</span>4<span style="color:#ff79c6">]</span>;  
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">for</span>(<span style="color:#8be9fd">int</span> i<span style="color:#ff79c6">=</span>0;i<span style="color:#ff79c6">&lt;</span>1000;i<span style="color:#ff79c6">++</span>){  
+</span></span><span style="display:flex;"><span>            count<span style="color:#ff79c6">[</span>loadBalance()<span style="color:#ff79c6">]++</span>;  
+</span></span><span style="display:flex;"><span>        }  
+</span></span><span style="display:flex;"><span>        System.<span style="color:#50fa7b">out</span>.<span style="color:#50fa7b">println</span>(Arrays.<span style="color:#50fa7b">toString</span>(count));  
+</span></span><span style="display:flex;"><span>    }  
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
 
                 
 
