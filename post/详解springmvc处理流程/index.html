@@ -221,13 +221,16 @@
 <p>本文将深入分析Spring MVC处理流程中的每个阶段，帮助你理解如何从请求到响应的完整工作机制。</p>
 <h1 id="整体流程">整体流程</h1>
 <p>大家先看看这张图对大致流程进行一个了解（后边文章在看的时候可以结合这张图）</p>
-<p>![[SpringMVC架构.png]]</p>
+<p>
+  <img src="./SpringMVC%e6%9e%b6%e6%9e%84.png" alt="">
+
+</p>
 <p>我们知道SpringMVC是运行在Web容器（Tomcat、Jetty等）中的，而SpringMVC的核心处理器就是<code>DispatcherServlet</code> ，那么<code>DispatcherServlet</code> 是如何接收到要处理的Http请求的呢？</p>
 <p>实际上，它继承了<code>FrameworkServlet</code> ，而<code>FrameworkServlet</code> 又继承了<code>HttpServlet</code> ，当Web容器收到Http请求后，会将它们发送给Servlet，并调用Servlet的<code>service()</code>方法来处理它们。</p>
 <p>然而<code>FrameworkServlet</code>中定义了<code>service</code>方法，所以<code>DispatcherServlet</code>实际上调用的就是它父类的<code>service</code>方法，<code>service</code>方法中又调用了<code>processRequest</code>方法，而这些都是在父类<code>FrameworkServlet</code>中完成的，接下来<code>processRequest</code>方法调用了<code>doService</code>方法，就交给了子类<code>DispatcherServlet</code>来处理，而SpringMVC的核心处理流程就从<code>doService</code>方法开始了。</p>
 <p>先给大家看下<code>DispatcherServlet</code>的调用时序图（比较丑陋，大家将就看看），时序图忽略了<code>doService</code>之前的流程，所以给大家在上面梳理了一下，接下来就只关注<code>doService</code>方法开始。</p>
 <p>
-  <img src="SpringMVC%e8%b0%83%e7%94%a8%e6%97%b6%e5%ba%8f%e5%9b%be.png" alt="">
+  <img src="./SpringMVC%e8%b0%83%e7%94%a8%e6%97%b6%e5%ba%8f%e5%9b%be.png" alt="">
 
 </p>
 <p>看图我们可以知道，实际上<code>doService</code>方法并没有控制各个组件进行处理，而是调用了<code>doDispatch</code>方法，<code>doService</code>只是对Request对象进行了一些处理，比如设置一些属性值。</p>
