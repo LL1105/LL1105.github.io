@@ -22,5 +22,12 @@
       <guid>https://LL1105.github.io/post/%E5%B8%A6%E6%9D%83%E8%BD%AE%E8%AF%A2%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%AE%9E%E7%8E%B0%E6%8E%A2%E8%AE%A8/</guid>
       <description>带权轮询负载均衡业务场景 负载均衡是在请求资源时，当资源有多个，我们应该请求哪一个才能让资源利用率最大化的方法。 轮询是最简单粗暴的一种策略，这</description>
     </item>
+    <item>
+      <title></title>
+      <link>https://LL1105.github.io/post/linux%E6%98%AF%E5%A6%82%E4%BD%95%E5%88%9B%E5%BB%BA%E8%BF%9B%E7%A8%8B%E7%9A%84/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://LL1105.github.io/post/linux%E6%98%AF%E5%A6%82%E4%BD%95%E5%88%9B%E5%BB%BA%E8%BF%9B%E7%A8%8B%E7%9A%84/</guid>
+      <description>Linux的进程 首先我们看下进程的定义：进程就是处于执行期的程序。 我们知道，进程是操作系统资源分配的基本单位，每个进程有独属于自己的虚拟空间</description>
+    </item>
   </channel>
 </rss>
