@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta property="og:site_name" content="MJJ&#39;s Blog">
+    <meta property="og:type" content="article">
+
+    
+    <meta property="og:image" content="https://LL1105.github.io//img/bg.jpeg">
+    <meta property="twitter:image" content="https://LL1105.github.io//img/bg.jpeg" />
+    
+
+    
+    <meta name="title" content="" />
+    <meta property="og:title" content="" />
+    <meta property="twitter:title" content="" />
+    
+
+    
+    <meta name="description" content="MJJ的博客网站，助力技术沉淀">
+    <meta property="og:description" content="MJJ的博客网站，助力技术沉淀" />
+    <meta property="twitter:description" content="MJJ的博客网站，助力技术沉淀" />
+    
+
+    
+    <meta property="twitter:card" content="summary" />
+    
+    
+
+    <meta name="keyword"  content="博客">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title></title>
+
+    <link rel="canonical" href="/post/redis%E9%99%90%E6%B5%81%E4%BD%BF%E7%94%A8redis-cluster%E7%AA%81%E7%A0%B4%E5%8D%95redis%E9%99%90%E6%B5%81%E7%93%B6%E9%A2%88/">
+
+    
+    
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="/css/hugo-theme-cleanwhite.min.css">
+
+    
+    <link rel="stylesheet" href="/css/zanshang.css">
+
+    
+    <link rel="stylesheet" href="/css/font-awesome.all.min.css">
+
+    
+    
+
+    
+    <script src="/js/jquery.min.js"></script>
+
+    
+    <script src="/js/bootstrap.min.js"></script>
+
+    
+    <script src="/js/hux-blog.min.js"></script>
+
+    
+    <script src="/js/lazysizes.min.js"></script>
+
+    
+    
+
+</head>
+
+
+
+
+
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">MJJ&#39;s Blog</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">All Posts</a>
+                    </li>
+                    
+                        
+                    
+                    
+		    
+                        <li><a href="/archive//">ARCHIVE</a></li>
+                    
+                        <li><a href="/about//">ABOUT</a></li>
+                    
+		            <li>
+                        <a href="/search"><i class="fa fa-search"></i></a>
+		           </li>
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/img/bg.jpeg')
+    }
+</style>
+
+<header class="intro-header" >
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                    </div>
+                    <h1></h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+                        
+                            Posted by 
+                            
+                                    MJJ&#39;s Blog
+                             
+                            on 
+                            Monday, January 1, 0001
+                            
+                            
+                            
+                            
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+<article>
+    <div class="container">
+        <div class="row">
+
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                
+                <h1 id="概述">概述</h1>
+<p>当我们借助Redis实现分布式限流时，通常会根据将一个限流key放在一个Redis节点上，例如使用Redission的限流：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>RRateLimiter rateLimiter <span style="color:#ff79c6">=</span> redissonClient.<span style="color:#50fa7b">getRateLimiter</span>(<span style="color:#f1fa8c">&#34;rate:limiter:key&#34;</span>);  
+</span></span><span style="display:flex;"><span>rateLimiter.<span style="color:#50fa7b">trySetRate</span>(  
+</span></span><span style="display:flex;"><span>        RateType.<span style="color:#50fa7b">OVERALL</span>,  
+</span></span><span style="display:flex;"><span>        100, 
+</span></span><span style="display:flex;"><span>        1,  
+</span></span><span style="display:flex;"><span>        RateIntervalUnit.<span style="color:#50fa7b">SECONDS</span>  
+</span></span><span style="display:flex;"><span>);
+</span></span><span style="display:flex;"><span>rateLimiter.<span style="color:#50fa7b">tryAcquire</span>(1);
+</span></span></code></pre></div><p>使用这种方式限流，关于<code>rate:limiter:key</code>这个限流key的请求都会请求该key所在的Redis节点，也就是说是单个Redis实例承担了这个限流key的所有请求。</p>
+<p>然而当这个限流key的QPS超出单个Redis实例所能承受的极限时，那么将会导致这个Redis节点宕机，导致限流甚至服务不可用。</p>
+<p>本文针对此问题，使用Redis Cluster来优化Redis限流单点瓶颈的问题，如有问题还请大家在评论区指出。</p>
+<h1 id="redis-cluster限流">Redis Cluster限流</h1>
+<p>首先我们需要知道为什么Redis Cluster可以解决Redis单点的问题。</p>
+<p>Redis Cluster中有多个主节点可以接收请求，并且每个主节点有多个从节点进行容灾和备份。</p>
+<p>Redis Cluster的各个主节点是通过分配16384个槽来决定每个主节点应该负责哪些key。</p>
+<p>一个key是如何路由到Redis Cluster中的一个主节点的呢？
+Redis Cluster会根据key计算出一个哈希key，这个key是整数，判断这个key对应的槽是哪个主节点负责，就将这个key分配给对应主节点。
+当Redis的key加了<code>{}</code>大括号的后缀，Redis Cluster就会根据<code>{}</code>里的信息去计算哈希key。</p>
+<p>因此，我们可以通过指定<code>{}</code>的信息去将单个限流key分散到不同的主节点，每个主节点负责一部分限流，同时我们对其进行负载均衡，确保请求能均匀的分布在这些Redis节点上。</p>
+<p>以下是简单的代码实现:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">class</span> <span style="color:#50fa7b">RedisRateLimiter</span> <span style="color:#8be9fd;font-style:italic">implements</span> RateLimiter {  
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4">// 线程安全的负载均衡计数器  </span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">private</span> <span style="color:#8be9fd;font-style:italic">final</span> AtomicInteger loadBalanced <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> AtomicInteger(0);  
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4">// 集群节点数量  </span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">private</span> <span style="color:#8be9fd;font-style:italic">final</span> <span style="color:#8be9fd">int</span> size;  
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4">// 限流键  </span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">private</span> <span style="color:#8be9fd;font-style:italic">final</span> String key;  
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4">// 总限流速率  </span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">private</span> <span style="color:#8be9fd;font-style:italic">final</span> <span style="color:#8be9fd">long</span> rate;  
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4">// 时间单位  </span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">private</span> <span style="color:#8be9fd;font-style:italic">final</span> TimeUnit unit;  
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4">// 每个节点的限流器列表  </span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">private</span> <span style="color:#8be9fd;font-style:italic">final</span> List<span style="color:#ff79c6">&lt;</span>RRateLimiter<span style="color:#ff79c6">&gt;</span> rateLimiters <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> ArrayList<span style="color:#ff79c6">&lt;&gt;</span>();  
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#50fa7b">RedisRateLimiter</span>(String key, <span style="color:#8be9fd">long</span> rate, <span style="color:#8be9fd">int</span> time, TimeUnit unit) {  
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">this</span>.<span style="color:#50fa7b">key</span> <span style="color:#ff79c6">=</span> key;  
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">this</span>.<span style="color:#50fa7b">rate</span> <span style="color:#ff79c6">=</span> rate;  
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">this</span>.<span style="color:#50fa7b">unit</span> <span style="color:#ff79c6">=</span> unit;  
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>        <span style="color:#6272a4">// 获取 Redisson 客户端实例  </span>
+</span></span><span style="display:flex;"><span>        RedissonClient redissonClient <span style="color:#ff79c6">=</span> RedissonClusterSingleton.<span style="color:#50fa7b">getInstance</span>();  
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>        <span style="color:#6272a4">// 获取集群节点数量  </span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">this</span>.<span style="color:#50fa7b">size</span> <span style="color:#ff79c6">=</span> redissonClient.<span style="color:#50fa7b">getClusterNodesGroup</span>().<span style="color:#50fa7b">getNodes</span>().<span style="color:#50fa7b">size</span>();  
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>        <span style="color:#6272a4">// 初始化每个节点的限流器  </span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">for</span> (<span style="color:#8be9fd">int</span> i <span style="color:#ff79c6">=</span> 0; i <span style="color:#ff79c6">&lt;</span> size; i<span style="color:#ff79c6">++</span>) {  
+</span></span><span style="display:flex;"><span>            <span style="color:#6272a4">// 限流键分片，确保分布在不同的 Redis 节点上  </span>
+</span></span><span style="display:flex;"><span>            RRateLimiter rateLimiter <span style="color:#ff79c6">=</span> redissonClient.<span style="color:#50fa7b">getRateLimiter</span>(key <span style="color:#ff79c6">+</span> <span style="color:#f1fa8c">&#34;{&#34;</span> <span style="color:#ff79c6">+</span> (i <span style="color:#ff79c6">+</span> 1) <span style="color:#ff79c6">+</span> <span style="color:#f1fa8c">&#34;}&#34;</span>);  
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>            <span style="color:#6272a4">// 设置限流规则：每个节点分配均等的限流速率  </span>
+</span></span><span style="display:flex;"><span>            rateLimiter.<span style="color:#50fa7b">trySetRate</span>(  
+</span></span><span style="display:flex;"><span>                    RateType.<span style="color:#50fa7b">OVERALL</span>,  
+</span></span><span style="display:flex;"><span>                    rate <span style="color:#ff79c6">/</span> size,  
+</span></span><span style="display:flex;"><span>                    time,  
+</span></span><span style="display:flex;"><span>                    RateIntervalUnit.<span style="color:#50fa7b">valueOf</span>(unit.<span style="color:#50fa7b">name</span>())  
+</span></span><span style="display:flex;"><span>            );  
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>            rateLimiters.<span style="color:#50fa7b">add</span>(rateLimiter);  
+</span></span><span style="display:flex;"><span>        }  
+</span></span><span style="display:flex;"><span>    }  
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4">/**  
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4">     * 获取下一个限流器索引 (负载均衡)  
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4">     *     
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4">     * @return 限流器索引  
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4">     */</span>  
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">private</span> <span style="color:#8be9fd">int</span> <span style="color:#50fa7b">getLoadBalanced</span>() {  
+</span></span><span style="display:flex;"><span>        <span style="color:#6272a4">// 使用 AtomicInteger 实现线程安全的轮询  </span>
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">return</span> loadBalanced.<span style="color:#50fa7b">getAndIncrement</span>() <span style="color:#ff79c6">%</span> size;  
+</span></span><span style="display:flex;"><span>    }  
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>    @Override  
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd">boolean</span> <span style="color:#50fa7b">acquire</span>() {  
+</span></span><span style="display:flex;"><span>        <span style="color:#6272a4">// 通过负载均衡获取对应的限流器  </span>
+</span></span><span style="display:flex;"><span>        RRateLimiter rRateLimiter <span style="color:#ff79c6">=</span> rateLimiters.<span style="color:#50fa7b">get</span>(getLoadBalanced());  
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">return</span> rRateLimiter.<span style="color:#50fa7b">tryAcquire</span>(1);  
+</span></span><span style="display:flex;"><span>    }  
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>    @Override  
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd">boolean</span> <span style="color:#50fa7b">acquire</span>(<span style="color:#8be9fd">int</span> permits) {  
+</span></span><span style="display:flex;"><span>        <span style="color:#6272a4">// 通过负载均衡获取对应的限流器  </span>
+</span></span><span style="display:flex;"><span>        RRateLimiter rRateLimiter <span style="color:#ff79c6">=</span> rateLimiters.<span style="color:#50fa7b">get</span>(getLoadBalanced());  
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">return</span> rRateLimiter.<span style="color:#50fa7b">tryAcquire</span>(permits);  
+</span></span><span style="display:flex;"><span>    }  
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>上述代码有很多不完善的地方，比如负载均衡没有考虑CRC16算法计算<code>{}</code>中的值后再计算哈希key是否能保证每个Redis节点的轮询等等，后续将完善并更新。</p>
+
+
+                
+
+                
+                <hr>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/post/%E4%BA%A4%E6%98%93%E5%BC%95%E6%93%8E%E8%AE%BE%E8%AE%A1/" data-toggle="tooltip" data-placement="top" title="">&larr;
+                            Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/post/linux%E6%98%AF%E5%A6%82%E4%BD%95%E5%88%9B%E5%BB%BA%E8%BF%9B%E7%A8%8B%E7%9A%84/" data-toggle="tooltip" data-placement="top" title="">Next
+                            Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+                
+
+                
+<script src="https://giscus.app/client.js"
+        data-repo="helloworld-mjj/helloworld-mjj.github.io"
+        data-repo-id="R_kgDOL_6yNw"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOL_6yN84CiIBs"
+        data-mapping="pathname"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-theme="light"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+
+<div id="disqus-comment"></div>
+<div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "giscus" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+            </div>
+
+            
+            
+            <div class="
+                col-lg-2 col-lg-offset-0
+                visible-lg-block
+                sidebar-container
+                catalog-container">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>
+                        <a class="catalog-toggle" href="#">CATALOG</a>
+                    </h5>
+                    <ul class="catalog-body"></ul>
+                </div>
+            </div>
+            
+
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                    </div>
+                </section>
+                
+
+                
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">                  
+                    
+                    
+                    
+                    
+                    
+
+		            
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+            
+            
+            
+           
+             </ul>
+		<p class="copyright text-muted">
+                    Copyright &copy; MJJ&#39;s Blog 2025
+                    
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<script>
+    function loadAsync(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+
+<script>
+    
+    if($('#tag_cloud').length !== 0){
+        loadAsync("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+
+<script>
+    loadAsync("https://cdn.jsdelivr.net/npm/fastclick@1.0.6/lib/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+
+
+
+<script type="text/javascript">
+    function generateCatalog(selector) {
+
+        
+        
+        
+        
+            _containerSelector = 'div.post-container'
+        
+
+        
+        var P = $(_containerSelector), a, n, t, l, i, c;
+        a = P.find('h1,h2,h3,h4,h5,h6');
+
+        
+        $(selector).html('')
+
+        
+        a.each(function () {
+            n = $(this).prop('tagName').toLowerCase();
+            i = "#" + $(this).prop('id');
+            t = $(this).text();
+            c = $('<a href="' + i + '" rel="nofollow">' + t + '</a>');
+            l = $('<li class="' + n + '_nav"></li>').append(c);
+            $(selector).append(l);
+        });
+        return true;
+    }
+
+    generateCatalog(".catalog-body");
+
+    
+    $(".catalog-toggle").click((function (e) {
+        e.preventDefault();
+        $('.side-catalog').toggleClass("fold")
+    }))
+
+    
+
+
+    loadAsync("\/js\/jquery.nav.js", function () {
+        $('.catalog-body').onePageNav({
+            currentClass: "active",
+            changeHash: !1,
+            easing: "swing",
+            filter: "",
+            scrollSpeed: 700,
+            scrollOffset: 0,
+            scrollThreshold: .2,
+            begin: null,
+            end: null,
+            scrollChange: null,
+            padding: 80
+        });
+    });
+</script>
+
+
+
+
+
+
+</body>
+</html>

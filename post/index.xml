@@ -23,11 +23,487 @@
       <description>带权轮询负载均衡业务场景 负载均衡是在请求资源时，当资源有多个，我们应该请求哪一个才能让资源利用率最大化的方法。 轮询是最简单粗暴的一种策略，这</description>
     </item>
     <item>
+      <title>Istio v1aplha3 routing API介绍(译文）</title>
+      <link>https://LL1105.github.io/2018/06/04/introducing-the-istio-v1alpha3-routing-api/</link>
+      <pubDate>Mon, 04 Jun 2018 00:00:00 +0000</pubDate>
+      <guid>https://LL1105.github.io/2018/06/04/introducing-the-istio-v1alpha3-routing-api/</guid>
+      <description>&lt;p&gt;到目前为止，Istio提供了一个简单的API来进行流量管理，该API包括了四种资源：RouteRule，DestinationPolicy，EgressRule和Ingress（直接使用了Kubernets的Ingress资源）。借助此API，用户可以轻松管理Istio服务网格中的流量。该API允许用户将请求路由到特定版本的服务，为弹性测试注入延迟和失败，添加超时和断路器等等，所有这些功能都不必更改应用程序本身的代码。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://LL1105.github.io/post/assert/oebps/text/00/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://LL1105.github.io/post/assert/oebps/text/00/</guid>
+      <description>&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt; &lt;!DOCTYPE html PUBLIC &#34;-//W3C//DTD XHTML 1.1//EN&#34; &#34;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&#34;&gt; 03-从0开始学架构 03-从0开始学架构</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://LL1105.github.io/post/assert/oebps/text/01/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://LL1105.github.io/post/assert/oebps/text/01/</guid>
+      <description>&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt; &lt;!DOCTYPE html PUBLIC &#34;-//W3C//DTD XHTML 1.1//EN&#34; &#34;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&#34;&gt; 开篇词 | 照着做，你也能成为架构师！ 开篇词 | 照着做，你也能成为架构师！ 每个程序员心中都有一个成为架构师的梦想，梦想是美好的</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://LL1105.github.io/post/assert/oebps/text/02/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://LL1105.github.io/post/assert/oebps/text/02/</guid>
+      <description>&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt; &lt;!DOCTYPE html PUBLIC &#34;-//W3C//DTD XHTML 1.1//EN&#34; &#34;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&#34;&gt; 01 | 架构到底是指什么？ 01 | 架构到底是指什么？ 对于技术人员来说，“架构”是一个再常见不过的词了。我们会对新员工培训整个系统</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://LL1105.github.io/post/assert/oebps/text/03/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://LL1105.github.io/post/assert/oebps/text/03/</guid>
+      <description>&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt; &lt;!DOCTYPE html PUBLIC &#34;-//W3C//DTD XHTML 1.1//EN&#34; &#34;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&#34;&gt; 02 | 架构设计的历史背景 02 | 架构设计的历史背景 理解了架构的有关概念和定义之后，今天，我会给你讲讲架构设计的历史背景。我认为</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://LL1105.github.io/post/assert/oebps/text/04/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://LL1105.github.io/post/assert/oebps/text/04/</guid>
+      <description>&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt; &lt;!DOCTYPE html PUBLIC &#34;-//W3C//DTD XHTML 1.1//EN&#34; &#34;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&#34;&gt; 03 | 架构设计的目的 03 | 架构设计的目的 周二，我们聊了架构出现的历史背景和推动因素。以史为鉴，对我们了解架构设计的目的很有帮</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://LL1105.github.io/post/assert/oebps/text/05/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://LL1105.github.io/post/assert/oebps/text/05/</guid>
+      <description>&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt; &lt;!DOCTYPE html PUBLIC &#34;-//W3C//DTD XHTML 1.1//EN&#34; &#34;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&#34;&gt; 04 | 复杂度来源：高性能 04 | 复杂度来源：高性能 周四，我为你讲了架构设计的主要目的是为了解决软件系统复杂度带来的问题。那么从</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://LL1105.github.io/post/assert/oebps/text/06/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://LL1105.github.io/post/assert/oebps/text/06/</guid>
+      <description>&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt; &lt;!DOCTYPE html PUBLIC &#34;-//W3C//DTD XHTML 1.1//EN&#34; &#34;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&#34;&gt; 05 | 复杂度来源：高可用 05 | 复杂度来源：高可用 今天，我们聊聊复杂度的第二个来源高可用。 参考维基百科，先来看看高可用的定义。</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://LL1105.github.io/post/assert/oebps/text/07/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://LL1105.github.io/post/assert/oebps/text/07/</guid>
+      <description>&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt; &lt;!DOCTYPE html PUBLIC &#34;-//W3C//DTD XHTML 1.1//EN&#34; &#34;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&#34;&gt; 06 | 复杂度来源：可扩展性 06 | 复杂度来源：可扩展性 复杂度来源前面已经讲了高性能和高可用，今天来聊聊可扩展性。 可扩展性指系统</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://LL1105.github.io/post/assert/oebps/text/08/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://LL1105.github.io/post/assert/oebps/text/08/</guid>
+      <description>&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt; &lt;!DOCTYPE html PUBLIC &#34;-//W3C//DTD XHTML 1.1//EN&#34; &#34;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&#34;&gt; 07 | 复杂度来源：低成本、安全、规模 07 | 复杂度来源：低成本、安全、规模 关于复杂度来源，前面的专栏已经讲了高性能、高可用和可</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://LL1105.github.io/post/assert/oebps/text/09/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://LL1105.github.io/post/assert/oebps/text/09/</guid>
+      <description>&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt; &lt;!DOCTYPE html PUBLIC &#34;-//W3C//DTD XHTML 1.1//EN&#34; &#34;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&#34;&gt; 08 | 架构设计三原则 08 | 架构设计三原则 前面几期专栏，我跟你系统的聊了架构设计的主要目的是为了解决软件系统复杂度带来的问题，</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://LL1105.github.io/post/assert/oebps/text/10/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://LL1105.github.io/post/assert/oebps/text/10/</guid>
+      <description>&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt; &lt;!DOCTYPE html PUBLIC &#34;-//W3C//DTD XHTML 1.1//EN&#34; &#34;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&#34;&gt; 09 | 架构设计原则案例 09 | 架构设计原则案例 周二，我给你介绍了架构设计的三条核心原则，先复习一下：合适原则、简单原则和演化原</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://LL1105.github.io/post/assert/oebps/text/11/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://LL1105.github.io/post/assert/oebps/text/11/</guid>
+      <description>&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt; &lt;!DOCTYPE html PUBLIC &#34;-//W3C//DTD XHTML 1.1//EN&#34; &#34;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&#34;&gt; 10 | 架构设计流程：识别复杂度 10 | 架构设计流程：识别复杂度 从今天开始，我将分 4 期，结合复杂度来源和架构设计原则，通过一个模</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://LL1105.github.io/post/assert/oebps/text/12/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://LL1105.github.io/post/assert/oebps/text/12/</guid>
+      <description>&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt; &lt;!DOCTYPE html PUBLIC &#34;-//W3C//DTD XHTML 1.1//EN&#34; &#34;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&#34;&gt; 11 | 架构设计流程：设计备选方案 11 | 架构设计流程：设计备选方案 上一期我讲了架构设计流程第 1 步识别复杂度，确定了系统面临的主</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://LL1105.github.io/post/assert/oebps/text/13/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://LL1105.github.io/post/assert/oebps/text/13/</guid>
+      <description>&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt; &lt;!DOCTYPE html PUBLIC &#34;-//W3C//DTD XHTML 1.1//EN&#34; &#34;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&#34;&gt; 12 | 架构设计流程：评估和选择备选方案 12 | 架构设计流程：评估和选择备选方案 上一期我讲了设计备选方案，在完成备选方案设计后，</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://LL1105.github.io/post/assert/oebps/text/14/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://LL1105.github.io/post/assert/oebps/text/14/</guid>
+      <description>&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt; &lt;!DOCTYPE html PUBLIC &#34;-//W3C//DTD XHTML 1.1//EN&#34; &#34;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&#34;&gt; 13 | 架构设计流程：详细方案设计 13 | 架构设计流程：详细方案设计 完成备选方案的设计和选择后，我们终于可以长出一口气，因为整个</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://LL1105.github.io/post/assert/oebps/text/15/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://LL1105.github.io/post/assert/oebps/text/15/</guid>
+      <description>&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt; &lt;!DOCTYPE html PUBLIC &#34;-//W3C//DTD XHTML 1.1//EN&#34; &#34;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&#34;&gt; 14 | 高性能数据库集群：读写分离 14 | 高性能数据库集群：读写分离 “从 0 开始学架构”专栏已经更新了 13 期，从各个方面阐述了架构设</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://LL1105.github.io/post/assert/oebps/text/16/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://LL1105.github.io/post/assert/oebps/text/16/</guid>
+      <description>&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt; &lt;!DOCTYPE html PUBLIC &#34;-//W3C//DTD XHTML 1.1//EN&#34; &#34;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&#34;&gt; 15 | 高性能数据库集群：分库分表 15 | 高性能数据库集群：分库分表 上期我讲了“读写分离”，读写分离分散了数据库读写操作的压力，</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://LL1105.github.io/post/assert/oebps/text/17/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://LL1105.github.io/post/assert/oebps/text/17/</guid>
+      <description>&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt; &lt;!DOCTYPE html PUBLIC &#34;-//W3C//DTD XHTML 1.1//EN&#34; &#34;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&#34;&gt; 16 | 高性能NoSQL 16 | 高性能NoSQL 关系数据库经过几十年的发展后已经非常成熟，强大的 SQL 功能和 ACID 的属性，使得关系数据库</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://LL1105.github.io/post/assert/oebps/text/18/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://LL1105.github.io/post/assert/oebps/text/18/</guid>
+      <description>&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt; &lt;!DOCTYPE html PUBLIC &#34;-//W3C//DTD XHTML 1.1//EN&#34; &#34;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&#34;&gt; 17 | 高性能缓存架构 17 | 高性能缓存架构 虽然我们可以通过各种手段来提升存储系统的性能，但在某些复杂的业务场景下，单纯依靠存储</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://LL1105.github.io/post/assert/oebps/text/19/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://LL1105.github.io/post/assert/oebps/text/19/</guid>
+      <description>&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt; &lt;!DOCTYPE html PUBLIC &#34;-//W3C//DTD XHTML 1.1//EN&#34; &#34;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&#34;&gt; 18 | 单服务器高性能模式：PPC与TPC 18 | 单服务器高性能模式：PPC与TPC 高性能是每个程序员的追求，无论我们是做一个系</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://LL1105.github.io/post/assert/oebps/text/20/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://LL1105.github.io/post/assert/oebps/text/20/</guid>
+      <description>&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt; &lt;!DOCTYPE html PUBLIC &#34;-//W3C//DTD XHTML 1.1//EN&#34; &#34;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&#34;&gt; 19 | 单服务器高性能模式：Reactor与Proactor 19 | 单服务器高性能模式：Reactor与Proactor 专栏上一</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://LL1105.github.io/post/assert/oebps/text/21/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://LL1105.github.io/post/assert/oebps/text/21/</guid>
+      <description>&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt; &lt;!DOCTYPE html PUBLIC &#34;-//W3C//DTD XHTML 1.1//EN&#34; &#34;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&#34;&gt; 20 | 高性能负载均衡：分类及架构 20 | 高性能负载均衡：分类及架构 单服务器无论如何优化，无论采用多好的硬件，总会有一个性能天花</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://LL1105.github.io/post/assert/oebps/text/22/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://LL1105.github.io/post/assert/oebps/text/22/</guid>
+      <description>&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt; &lt;!DOCTYPE html PUBLIC &#34;-//W3C//DTD XHTML 1.1//EN&#34; &#34;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&#34;&gt; 21 | 高性能负载均衡：算法 21 | 高性能负载均衡：算法 负载均衡算法数量较多，而且可以根据一些业务特性进行定制开发，抛开细节上的</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://LL1105.github.io/post/assert/oebps/text/23/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://LL1105.github.io/post/assert/oebps/text/23/</guid>
+      <description>&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt; &lt;!DOCTYPE html PUBLIC &#34;-//W3C//DTD XHTML 1.1//EN&#34; &#34;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&#34;&gt; 22 | 想成为架构师，你必须知道CAP理论 22 | 想成为架构师，你必须知道CAP理论 CAP 定理（CAP theorem）又被称作布鲁尔</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://LL1105.github.io/post/assert/oebps/text/24/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://LL1105.github.io/post/assert/oebps/text/24/</guid>
+      <description>&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt; &lt;!DOCTYPE html PUBLIC &#34;-//W3C//DTD XHTML 1.1//EN&#34; &#34;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&#34;&gt; 23 | 想成为架构师，你必须掌握的CAP细节 23 | 想成为架构师，你必须掌握的CAP细节 理论的优点在于清晰简洁、易于理解，但缺点</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://LL1105.github.io/post/assert/oebps/text/25/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://LL1105.github.io/post/assert/oebps/text/25/</guid>
+      <description>&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt; &lt;!DOCTYPE html PUBLIC &#34;-//W3C//DTD XHTML 1.1//EN&#34; &#34;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&#34;&gt; 24 | FMEA方法，排除架构可用性隐患的利器 24 | FMEA方法，排除架构可用性隐患的利器 我在前面的专栏分析高可用复杂度的时候</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://LL1105.github.io/post/assert/oebps/text/26/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://LL1105.github.io/post/assert/oebps/text/26/</guid>
+      <description>&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt; &lt;!DOCTYPE html PUBLIC &#34;-//W3C//DTD XHTML 1.1//EN&#34; &#34;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&#34;&gt; 25 | 高可用存储架构：双机架构 25 | 高可用存储架构：双机架构 存储高可用方案的本质都是通过将数据复制到多个存储设备，通过数据冗</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://LL1105.github.io/post/assert/oebps/text/27/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://LL1105.github.io/post/assert/oebps/text/27/</guid>
+      <description>&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt; &lt;!DOCTYPE html PUBLIC &#34;-//W3C//DTD XHTML 1.1//EN&#34; &#34;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&#34;&gt; 26 | 高可用存储架构：集群和分区 26 | 高可用存储架构：集群和分区 上一期我讲了高可用存储架构中常见的双机架构，分别为主备复制、</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://LL1105.github.io/post/assert/oebps/text/28/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://LL1105.github.io/post/assert/oebps/text/28/</guid>
+      <description>&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt; &lt;!DOCTYPE html PUBLIC &#34;-//W3C//DTD XHTML 1.1//EN&#34; &#34;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&#34;&gt; 27 | 如何设计计算高可用架构？ 27 | 如何设计计算高可用架构？ 计算高可用的主要设计目标是当出现部分硬件损坏时，计算任务能够继续</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://LL1105.github.io/post/assert/oebps/text/29/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://LL1105.github.io/post/assert/oebps/text/29/</guid>
+      <description>&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt; &lt;!DOCTYPE html PUBLIC &#34;-//W3C//DTD XHTML 1.1//EN&#34; &#34;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&#34;&gt; 28 | 业务高可用的保障：异地多活架构 28 | 业务高可用的保障：异地多活架构 无论是高可用计算架构，还是高可用存储架构，其本质的设</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://LL1105.github.io/post/assert/oebps/text/30/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://LL1105.github.io/post/assert/oebps/text/30/</guid>
+      <description>&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt; &lt;!DOCTYPE html PUBLIC &#34;-//W3C//DTD XHTML 1.1//EN&#34; &#34;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&#34;&gt; 29 | 异地多活设计4大技巧 29 | 异地多活设计4大技巧 专栏上一期我介绍了三种不同类型的异地多活架构，复习一下每个架构的关键点：</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://LL1105.github.io/post/assert/oebps/text/31/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://LL1105.github.io/post/assert/oebps/text/31/</guid>
+      <description>&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt; &lt;!DOCTYPE html PUBLIC &#34;-//W3C//DTD XHTML 1.1//EN&#34; &#34;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&#34;&gt; 30 | 异地多活设计4步走 30 | 异地多活设计4步走 上一期，基于异地多活架构设计复杂度最高的“跨城异地”，我结合自己的经验总结了</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://LL1105.github.io/post/assert/oebps/text/32/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://LL1105.github.io/post/assert/oebps/text/32/</guid>
+      <description>&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt; &lt;!DOCTYPE html PUBLIC &#34;-//W3C//DTD XHTML 1.1//EN&#34; &#34;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&#34;&gt; 31 | 如何应对接口级的故障？ 31 | 如何应对接口级的故障？ 异地多活方案主要应对系统级的故障，例如，机器宕机、机房故障、网络故障</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://LL1105.github.io/post/assert/oebps/text/33/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://LL1105.github.io/post/assert/oebps/text/33/</guid>
+      <description>&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt; &lt;!DOCTYPE html PUBLIC &#34;-//W3C//DTD XHTML 1.1//EN&#34; &#34;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&#34;&gt; 32 | 可扩展架构的基本思想和模式 32 | 可扩展架构的基本思想和模式 软件系统与硬件和建筑系统最大的差异在于软件是可扩展的，一个硬</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://LL1105.github.io/post/assert/oebps/text/34/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://LL1105.github.io/post/assert/oebps/text/34/</guid>
+      <description>&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt; &lt;!DOCTYPE html PUBLIC &#34;-//W3C//DTD XHTML 1.1//EN&#34; &#34;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&#34;&gt; 33 | 传统的可扩展架构模式：分层架构和SOA 33 | 传统的可扩展架构模式：分层架构和SOA 相比于高性能、高可用架构模式在最近几</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://LL1105.github.io/post/assert/oebps/text/35/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://LL1105.github.io/post/assert/oebps/text/35/</guid>
+      <description>&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt; &lt;!DOCTYPE html PUBLIC &#34;-//W3C//DTD XHTML 1.1//EN&#34; &#34;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&#34;&gt; 34 | 深入理解微服务架构：银弹 or 焦油坑？ 34 | 深入理解微服务架构：银弹 or 焦油坑？ 微服务是近几年非常火热的架构设计理念，大部分</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://LL1105.github.io/post/assert/oebps/text/36/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://LL1105.github.io/post/assert/oebps/text/36/</guid>
+      <description>&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt; &lt;!DOCTYPE html PUBLIC &#34;-//W3C//DTD XHTML 1.1//EN&#34; &#34;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&#34;&gt; 35 | 微服务架构最佳实践 - 方法篇 35 | 微服务架构最佳实践 - 方法篇 专栏上一期，我谈了实施微服务需要避免踩的陷阱，简单提炼为： 微</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://LL1105.github.io/post/assert/oebps/text/37/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://LL1105.github.io/post/assert/oebps/text/37/</guid>
+      <description>&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt; &lt;!DOCTYPE html PUBLIC &#34;-//W3C//DTD XHTML 1.1//EN&#34; &#34;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&#34;&gt; 36 | 微服务架构最佳实践 - 基础设施篇 36 | 微服务架构最佳实践 - 基础设施篇 每项微服务基础设施都是一个平台、一个系统、一个解决方</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://LL1105.github.io/post/assert/oebps/text/38/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://LL1105.github.io/post/assert/oebps/text/38/</guid>
+      <description>&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt; &lt;!DOCTYPE html PUBLIC &#34;-//W3C//DTD XHTML 1.1//EN&#34; &#34;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&#34;&gt; 37 | 微内核架构详解 37 | 微内核架构详解 微内核架构（Microkernel Architecture），也被称为插件化架构（P</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://LL1105.github.io/post/assert/oebps/text/39/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://LL1105.github.io/post/assert/oebps/text/39/</guid>
+      <description>&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt; &lt;!DOCTYPE html PUBLIC &#34;-//W3C//DTD XHTML 1.1//EN&#34; &#34;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&#34;&gt; 38 | 架构师应该如何判断技术演进的方向？ 38 | 架构师应该如何判断技术演进的方向？ 互联网的出现不但改变了普通人的生活方式，同时</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://LL1105.github.io/post/assert/oebps/text/40/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://LL1105.github.io/post/assert/oebps/text/40/</guid>
+      <description>&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt; &lt;!DOCTYPE html PUBLIC &#34;-//W3C//DTD XHTML 1.1//EN&#34; &#34;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&#34;&gt; 39 | 互联网技术演进的模式 39 | 互联网技术演进的模式 由于各行业的业务发展轨迹并不完全相同，无法给出一个统一的模板让所有的架构</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://LL1105.github.io/post/assert/oebps/text/41/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://LL1105.github.io/post/assert/oebps/text/41/</guid>
+      <description>&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt; &lt;!DOCTYPE html PUBLIC &#34;-//W3C//DTD XHTML 1.1//EN&#34; &#34;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&#34;&gt; 40 | 互联网架构模板：“存储层”技术 40 | 互联网架构模板：“存储层”技术 很多人对于 BAT 的技术有一种莫名的崇拜感，觉得只有天才才</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://LL1105.github.io/post/assert/oebps/text/42/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://LL1105.github.io/post/assert/oebps/text/42/</guid>
+      <description>&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt; &lt;!DOCTYPE html PUBLIC &#34;-//W3C//DTD XHTML 1.1//EN&#34; &#34;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&#34;&gt; 41 | 互联网架构模板：“开发层”和“服务层”技术 41 | 互联网架构模板：“开发层”和“服务层”技术 上一期，我介绍了互联网架构模</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://LL1105.github.io/post/assert/oebps/text/43/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://LL1105.github.io/post/assert/oebps/text/43/</guid>
+      <description>&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt; &lt;!DOCTYPE html PUBLIC &#34;-//W3C//DTD XHTML 1.1//EN&#34; &#34;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&#34;&gt; 42 | 互联网架构模板：“网络层”技术 42 | 互联网架构模板：“网络层”技术 除了复杂度，互联网业务发展的另外两个关键特点是“高性</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://LL1105.github.io/post/assert/oebps/text/44/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://LL1105.github.io/post/assert/oebps/text/44/</guid>
+      <description>&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt; &lt;!DOCTYPE html PUBLIC &#34;-//W3C//DTD XHTML 1.1//EN&#34; &#34;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&#34;&gt; 43 | 互联网架构模板：“用户层”和“业务层”技术 43 | 互联网架构模板：“用户层”和“业务层”技术 上一期，我从计算机网络层的角</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://LL1105.github.io/post/assert/oebps/text/45/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://LL1105.github.io/post/assert/oebps/text/45/</guid>
+      <description>&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt; &lt;!DOCTYPE html PUBLIC &#34;-//W3C//DTD XHTML 1.1//EN&#34; &#34;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&#34;&gt; 44 | 互联网架构模板：“平台”技术 44 | 互联网架构模板：“平台”技术 当业务规模比较小、系统复杂度不高时，运维、测试、数据分析</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://LL1105.github.io/post/assert/oebps/text/46/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://LL1105.github.io/post/assert/oebps/text/46/</guid>
+      <description>&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt; &lt;!DOCTYPE html PUBLIC &#34;-//W3C//DTD XHTML 1.1//EN&#34; &#34;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&#34;&gt; 45 | 架构重构内功心法第一式：有的放矢 45 | 架构重构内功心法第一式：有的放矢 在专栏第 8 期“架构设计三原则”中的演化原则部分，</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://LL1105.github.io/post/assert/oebps/text/47/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://LL1105.github.io/post/assert/oebps/text/47/</guid>
+      <description>&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt; &lt;!DOCTYPE html PUBLIC &#34;-//W3C//DTD XHTML 1.1//EN&#34; &#34;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&#34;&gt; 46 | 架构重构内功心法第二式：合纵连横 46 | 架构重构内功心法第二式：合纵连横 上一期我给你讲了我的架构重构内功心法的第一式：有</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://LL1105.github.io/post/assert/oebps/text/48/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://LL1105.github.io/post/assert/oebps/text/48/</guid>
+      <description>&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt; &lt;!DOCTYPE html PUBLIC &#34;-//W3C//DTD XHTML 1.1//EN&#34; &#34;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&#34;&gt; 47 | 架构重构内功心法第三式：运筹帷幄 47 | 架构重构内功心法第三式：运筹帷幄 在前面的架构重构内功心法“有的放矢”和“合纵连横</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://LL1105.github.io/post/assert/oebps/text/49/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://LL1105.github.io/post/assert/oebps/text/49/</guid>
+      <description>&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt; &lt;!DOCTYPE html PUBLIC &#34;-//W3C//DTD XHTML 1.1//EN&#34; &#34;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&#34;&gt; 48 | 再谈开源项目：如何选择、使用以及二次开发？ 48 | 再谈开源项目：如何选择、使用以及二次开发？ 我在专栏特别放送第 3 期谈了如</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://LL1105.github.io/post/assert/oebps/text/50/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://LL1105.github.io/post/assert/oebps/text/50/</guid>
+      <description>&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt; &lt;!DOCTYPE html PUBLIC &#34;-//W3C//DTD XHTML 1.1//EN&#34; &#34;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&#34;&gt; 49 | 谈谈App架构的演进 49 | 谈谈App架构的演进 专栏截止到上一期，架构设计相关的理念、技术、实践已经基本讲完，相信你一路</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://LL1105.github.io/post/assert/oebps/text/51/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://LL1105.github.io/post/assert/oebps/text/51/</guid>
+      <description>&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt; &lt;!DOCTYPE html PUBLIC &#34;-//W3C//DTD XHTML 1.1//EN&#34; &#34;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&#34;&gt; 50 | 架构实战：架构设计文档模板 50 | 架构实战：架构设计文档模板 在前面的专栏里，有同学留言说想看看具体的架构设计文档。由于信</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://LL1105.github.io/post/assert/oebps/text/52/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://LL1105.github.io/post/assert/oebps/text/52/</guid>
+      <description>&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt; &lt;!DOCTYPE html PUBLIC &#34;-//W3C//DTD XHTML 1.1//EN&#34; &#34;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&#34;&gt; 如何高效地学习开源项目 | “华仔，放学别走！” 第3期 如何高效地学习开源项目 | “华仔，放学别走！” 第3期 你好，我是华仔。今天</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://LL1105.github.io/post/assert/oebps/text/53/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://LL1105.github.io/post/assert/oebps/text/53/</guid>
+      <description>&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt; &lt;!DOCTYPE html PUBLIC &#34;-//W3C//DTD XHTML 1.1//EN&#34; &#34;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&#34;&gt; 新书首发 | 《从零开始学架构》 新书首发 | 《从零开始学架构》 你好，我是李运华。在完成「从 0 开始学架构」专栏后，今天又有一件意</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://LL1105.github.io/post/assert/oebps/text/54/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://LL1105.github.io/post/assert/oebps/text/54/</guid>
+      <description>&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt; &lt;!DOCTYPE html PUBLIC &#34;-//W3C//DTD XHTML 1.1//EN&#34; &#34;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&#34;&gt; 架构专栏特别放送 | “华仔，放学别走！”第1期 架构专栏特别放送 | “华仔，放学别走！”第1期 各位同学，晚上好，我就是那位在每</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://LL1105.github.io/post/assert/oebps/text/55/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://LL1105.github.io/post/assert/oebps/text/55/</guid>
+      <description>&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt; &lt;!DOCTYPE html PUBLIC &#34;-//W3C//DTD XHTML 1.1//EN&#34; &#34;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&#34;&gt; 架构专栏特别放送 | “华仔，放学别走！” 第2期 架构专栏特别放送 | “华仔，放学别走！” 第2期 各位同学，晚上好，我是架构专栏的</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://LL1105.github.io/post/assert/oebps/text/56/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://LL1105.github.io/post/assert/oebps/text/56/</guid>
+      <description>&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt; &lt;!DOCTYPE html PUBLIC &#34;-//W3C//DTD XHTML 1.1//EN&#34; &#34;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&#34;&gt; 架构师必读书单 | “华仔，放学别走！” 第5期 架构师必读书单 | “华仔，放学别走！” 第5期 你好，我是华仔。 在专栏更新的时候，很</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://LL1105.github.io/post/assert/oebps/text/57/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://LL1105.github.io/post/assert/oebps/text/57/</guid>
+      <description>&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt; &lt;!DOCTYPE html PUBLIC &#34;-//W3C//DTD XHTML 1.1//EN&#34; &#34;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&#34;&gt; 架构师成长之路 | “华仔，放学别走！” 第4期 架构师成长之路 | “华仔，放学别走！” 第4期 你好，我是华仔。《从 0 开始学架构》专</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://LL1105.github.io/post/assert/oebps/text/58/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://LL1105.github.io/post/assert/oebps/text/58/</guid>
+      <description>&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt; &lt;!DOCTYPE html PUBLIC &#34;-//W3C//DTD XHTML 1.1//EN&#34; &#34;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&#34;&gt; 致「从0开始学架构」专栏订阅用户 致「从0开始学架构」专栏订阅用户 你好，我是华仔。在我的专栏结束后，今天又有一个好消息想分</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://LL1105.github.io/post/assert/oebps/text/59/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://LL1105.github.io/post/assert/oebps/text/59/</guid>
+      <description>&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt; &lt;!DOCTYPE html PUBLIC &#34;-//W3C//DTD XHTML 1.1//EN&#34; &#34;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&#34;&gt; 结束语 | 坚持，成就你的技术梦想 结束语 | 坚持，成就你的技术梦想 “从 0 开始学架构”专栏历经 4 个月的时间，现在到了跟你说再见的</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://LL1105.github.io/post/http%E4%B8%8D%E5%90%8C%E7%89%88%E6%9C%AC%E5%88%B0%E5%BA%95%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://LL1105.github.io/post/http%E4%B8%8D%E5%90%8C%E7%89%88%E6%9C%AC%E5%88%B0%E5%BA%95%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB/</guid>
+      <description>HTTP协议版本 HTTP/0.9 ：只支持Get方法，不支持多媒体内通的MIME类型、各种HTTP首部、版本号等。 HTTP/1.0 ：相对于0.9版本，添加了版本号、各种H</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://LL1105.github.io/post/jvm%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://LL1105.github.io/post/jvm%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8/</guid>
+      <description>Serial GC JDK6及以前的版本的默认GC，包括Serial和Serial Old Parallel GC JDK7、8的默认GC，包括新生代的Parallel Scavenge</description>
+    </item>
+    <item>
       <title></title>
       <link>https://LL1105.github.io/post/linux%E6%98%AF%E5%A6%82%E4%BD%95%E5%88%9B%E5%BB%BA%E8%BF%9B%E7%A8%8B%E7%9A%84/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://LL1105.github.io/post/linux%E6%98%AF%E5%A6%82%E4%BD%95%E5%88%9B%E5%BB%BA%E8%BF%9B%E7%A8%8B%E7%9A%84/</guid>
       <description>Linux的进程 首先我们看下进程的定义：进程就是处于执行期的程序。 我们知道，进程是操作系统资源分配的基本单位，每个进程有独属于自己的虚拟空间</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://LL1105.github.io/post/redis%E9%99%90%E6%B5%81%E4%BD%BF%E7%94%A8redis-cluster%E7%AA%81%E7%A0%B4%E5%8D%95redis%E9%99%90%E6%B5%81%E7%93%B6%E9%A2%88/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://LL1105.github.io/post/redis%E9%99%90%E6%B5%81%E4%BD%BF%E7%94%A8redis-cluster%E7%AA%81%E7%A0%B4%E5%8D%95redis%E9%99%90%E6%B5%81%E7%93%B6%E9%A2%88/</guid>
+      <description>概述 当我们借助Redis实现分布式限流时，通常会根据将一个限流key放在一个Redis节点上，例如使用Redission的限流： RRateLimiter rateLimiter = redissonClient.getRateLimiter(&amp;#34;rate:limiter:key&amp;#34;); rateLimiter.trySetRate( RateType.OVERALL,</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://LL1105.github.io/post/%E4%BA%A4%E6%98%93%E5%BC%95%E6%93%8E%E8%AE%BE%E8%AE%A1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://LL1105.github.io/post/%E4%BA%A4%E6%98%93%E5%BC%95%E6%93%8E%E8%AE%BE%E8%AE%A1/</guid>
+      <description>一. 概述 交易引擎是金融系统的核心组件，用于处理买卖订单的撮合、账户管理、清算与结算、 风险控制等。一个优秀的交易引擎需要具备高性能、高可用性、</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://LL1105.github.io/post/%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://LL1105.github.io/post/%E5%88%86%E5%BA%93%E5%88%86%E8%A1%A8%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</guid>
+      <description>附属表 基因法</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://LL1105.github.io/post/%E6%85%A2%E6%9F%A5%E8%AF%A2%E6%8E%92%E6%9F%A5%E4%BB%A5%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://LL1105.github.io/post/%E6%85%A2%E6%9F%A5%E8%AF%A2%E6%8E%92%E6%9F%A5%E4%BB%A5%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://LL1105.github.io/post/%E7%BC%93%E5%AD%98%E4%B8%80%E8%87%B4%E6%80%A7%E9%97%AE%E9%A2%98%E5%85%A8%E5%9C%BA%E6%99%AF%E5%8F%8A%E5%85%B6%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://LL1105.github.io/post/%E7%BC%93%E5%AD%98%E4%B8%80%E8%87%B4%E6%80%A7%E9%97%AE%E9%A2%98%E5%85%A8%E5%9C%BA%E6%99%AF%E5%8F%8A%E5%85%B6%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</guid>
+      <description>缓存双写一致性 缓存双写一致性是分布式系统中处理缓存（如Redis、Memcached）与数据库（如MySQL）数据同步问题的核心挑战，指在对</description>
     </item>
   </channel>
 </rss>

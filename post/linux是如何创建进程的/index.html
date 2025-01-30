@@ -208,6 +208,106 @@
 <p>那么Linux进程是如何知道它的task_struct在哪里呢？实际上每个进程都会有自己的内核栈，而在栈顶存储了一个名为thread_info的结构，thread_info中就存储着所对应task_struct的地址。</p>
 <p>接下来我们介绍Linux内核创建进程的方式：<strong>fork()</strong></p>
 <h1 id="使用fork创建进程">使用fork()创建进程</h1>
+<p>在探索fork()执行流程之前，我们先来看看进程有哪些状态，也就是task_struct中的state字段：</p>
+<ul>
+<li>TASK_RUNNING：进程是可执行的。这表示它正在执行或者正在运行队列中等待执行。</li>
+<li>TASK_INTERRUPTIBLE：进程正在睡眠（被阻塞），等待某些条件的达成。一旦条件达成，那么进程就会立即运行。处于此状态的进程可以被立即唤醒并变为TASK_RUNNING状态。</li>
+<li>TASK_UNINTERRUPTIBLE：进程不可被唤醒，只能等待条件达成才可以变成TASK_RUNNING状态。</li>
+<li>TASK_TRACED：被其他线程跟踪。</li>
+<li>TASK_STOPPED：进程停止执行。</li>
+</ul>
+<p>当使用fork()函数创建一个进程，此进程立马进入TASK_RUNNING状态（准备就绪但还未投入运行)，接下来通过schedule()函数将进程投入运行，此时的进程即处于运行状态。</p>
+<p>![[Pasted image 20241125203947.png]]</p>
+<h2 id="创建进程">创建进程</h2>
+<p>首先我们明确一点，Linux调用fork()函数只是拷贝当前进程去创建一个子进程。子进程与当前进程的区别仅是PID、PPID(父进程的pid)和某些资源和统计量(例如：挂起的信号)。而exec()函数则是读取一段代码去执行这个子进程，也就是说，想要让子进程执行与父进程不同的逻辑，就必须调用exec()函数。</p>
+<p>以下是一个创建进程的简单代码实例：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#ff79c6">#include</span> <span style="color:#ff79c6">&lt;stdio.h&gt;</span><span style="color:#ff79c6">
+</span></span></span><span style="display:flex;"><span><span style="color:#ff79c6">#include</span> <span style="color:#ff79c6">&lt;stdlib.h&gt;</span><span style="color:#ff79c6">
+</span></span></span><span style="display:flex;"><span><span style="color:#ff79c6">#include</span> <span style="color:#ff79c6">&lt;unistd.h&gt;</span><span style="color:#ff79c6">
+</span></span></span><span style="display:flex;"><span><span style="color:#ff79c6">#include</span> <span style="color:#ff79c6">&lt;sys/wait.h&gt;</span><span style="color:#ff79c6">
+</span></span></span><span style="display:flex;"><span><span style="color:#ff79c6"></span>
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd">int</span> <span style="color:#50fa7b">main</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd">pid_t</span> pid;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4">// 创建子进程
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>    pid <span style="color:#ff79c6">=</span> <span style="color:#50fa7b">fork</span>();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">if</span> (pid <span style="color:#ff79c6">&lt;</span> <span style="color:#bd93f9">0</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#50fa7b">perror</span>(<span style="color:#f1fa8c">&#34;fork failed&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#50fa7b">exit</span>(EXIT_FAILURE);
+</span></span><span style="display:flex;"><span>    } <span style="color:#ff79c6">else</span> <span style="color:#ff79c6">if</span> (pid <span style="color:#ff79c6">==</span> <span style="color:#bd93f9">0</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#50fa7b">printf</span>(<span style="color:#f1fa8c">&#34;Child process (PID: %d), executing new program...</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, <span style="color:#50fa7b">getpid</span>());
+</span></span><span style="display:flex;"><span>        <span style="color:#8be9fd">char</span> <span style="color:#ff79c6">*</span>args[] <span style="color:#ff79c6">=</span> {<span style="color:#f1fa8c">&#34;ls&#34;</span>, <span style="color:#f1fa8c">&#34;-l&#34;</span>, <span style="color:#8be9fd;font-style:italic">NULL</span>};  <span style="color:#6272a4">// 参数数组
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>        <span style="color:#50fa7b">execvp</span>(args[<span style="color:#bd93f9">0</span>], args);
+</span></span><span style="display:flex;"><span>        <span style="color:#50fa7b">perror</span>(<span style="color:#f1fa8c">&#34;exec failed&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#50fa7b">exit</span>(EXIT_FAILURE);
+</span></span><span style="display:flex;"><span>    } <span style="color:#ff79c6">else</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#50fa7b">printf</span>(<span style="color:#f1fa8c">&#34;Parent process (PID: %d), waiting for child process (PID: %d)...</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, <span style="color:#50fa7b">getpid</span>(), pid);
+</span></span><span style="display:flex;"><span>        <span style="color:#8be9fd">int</span> status;
+</span></span><span style="display:flex;"><span>        <span style="color:#50fa7b">wait</span>(<span style="color:#ff79c6">&amp;</span>status); 
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">if</span> (<span style="color:#50fa7b">WIFEXITED</span>(status)) {
+</span></span><span style="display:flex;"><span>            <span style="color:#50fa7b">printf</span>(<span style="color:#f1fa8c">&#34;Child process exited with status %d</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>, <span style="color:#50fa7b">WEXITSTATUS</span>(status));
+</span></span><span style="display:flex;"><span>        } <span style="color:#ff79c6">else</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#50fa7b">printf</span>(<span style="color:#f1fa8c">&#34;Child process did not terminate normally</span><span style="color:#f1fa8c">\n</span><span style="color:#f1fa8c">&#34;</span>);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">return</span> <span style="color:#bd93f9">0</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
+<li><strong><code>fork()</code></strong>:
+<ul>
+<li>创建一个子进程。</li>
+<li>返回值：
+<ul>
+<li>父进程中返回子进程的 PID。</li>
+<li>子进程中返回 0。</li>
+<li>失败时返回 -1。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong><code>execvp()</code></strong>:
+<ul>
+<li>用新的程序替换当前进程的代码段。</li>
+<li>参数：
+<ul>
+<li>第一个参数是要执行的程序名。</li>
+<li>第二个参数是参数数组，最后一个元素必须为 <code>NULL</code>。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong><code>wait()</code></strong>:
+<ul>
+<li>父进程等待子进程完成并获取其退出状态。</li>
+</ul>
+</li>
+</ul>
+<h2 id="写时复制">写时复制</h2>
+<p>Linux的写时复制(copy-on-write)是一种可以推迟甚至可以免除拷贝的技术。</p>
+<p>在执行fork()函数时，Linux并不会将父进程的所有资源进行拷贝，而是让子进程和父进程共享空间。
+只有在需要写入的时候，父进程的资源才会被复制。如果fork()后立即调用exec()，也就代表父进程的页不会被写入，所以父进程的资源就不会被复制了。
+fork()的实际开销就是复制父进程的页表和给子进程创建一个task_struct，但是一般情况下，进程创建后都会立即执行exec()函数，也就是运行一个可执行文件，所以也就避免了拷贝大量的数据。</p>
+<h1 id="停止进程">停止进程</h1>
+<h2 id="僵尸进程">僵尸进程</h2>
+<p>进程一般调用exit()系统调用去终结，或者接收到特定信号或异常时去终结，而这些终结进程的方式最后都会调用do_exit()方法。</p>
+<p>在进程终结后会释放它所占用的资源，但是会保留它的进程描述符task_struct，处于这个状态的进程也叫<strong>僵尸进程</strong>。</p>
+<p>在进程释放资源后，需要通知它的父进程来删除它的task_struct，父进程使用wati()函数(wait4()系统调用)去删除子进程的task_struct;</p>
+<h2 id="孤儿进程">孤儿进程</h2>
+<p>当父进程在子进程之前终结，这时如果子进程找不到合适的父进程，子进程就成了一个<strong>孤儿进程</strong>，当孤儿进程终结时，无法找到父进程删除它的task_struct，那么这个进程就会永远变成僵尸进程。</p>
+<p>解决方案就是当子进程找不到父进程时，就在当前线程组内找一个进程作为父进程，如果不行，就会让全局父进程init进程进行托管。</p>
+<h1 id="总结">总结</h1>
+<ul>
+<li><strong>进程的本质</strong>：是操作系统中管理和分配资源的基本单位。</li>
+<li><strong>创建与执行</strong>：
+<ul>
+<li><code>fork()</code> 创建子进程，初始与父进程共享内存。</li>
+<li><code>exec()</code> 使子进程运行独立的逻辑。</li>
+</ul>
+</li>
+<li><strong>僵尸进程</strong> 和 <strong>孤儿进程</strong> 是进程管理中常见问题，需通过 <code>wait</code> 或 <code>init</code> 进程来处理。</li>
+<li><strong>写时复制</strong> 提高了资源利用效率，是 <code>fork()</code> 的关键优化。</li>
+</ul>
 
 
                 
@@ -216,9 +316,14 @@
                 <hr>
                 <ul class="pager">
                     
+                    <li class="previous">
+                        <a href="/post/redis%E9%99%90%E6%B5%81%E4%BD%BF%E7%94%A8redis-cluster%E7%AA%81%E7%A0%B4%E5%8D%95redis%E9%99%90%E6%B5%81%E7%93%B6%E9%A2%88/" data-toggle="tooltip" data-placement="top" title="">&larr;
+                            Previous Post</a>
+                    </li>
+                    
                     
                     <li class="next">
-                        <a href="/post/%E5%B8%A6%E6%9D%83%E8%BD%AE%E8%AF%A2%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%AE%9E%E7%8E%B0%E6%8E%A2%E8%AE%A8/" data-toggle="tooltip" data-placement="top" title="带权轮询负载均衡探讨">Next
+                        <a href="/post/jvm%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8/" data-toggle="tooltip" data-placement="top" title="">Next
                             Post &rarr;</a>
                     </li>
                     
@@ -304,6 +409,8 @@
                         
                         
                         
+                        
+                        
                     </div>
                 </section>
                 
@@ -347,7 +454,7 @@
            
              </ul>
 		<p class="copyright text-muted">
-                    Copyright &copy; MJJ&#39;s Blog 2024
+                    Copyright &copy; MJJ&#39;s Blog 2025
                     
                 </p>
             </div>
