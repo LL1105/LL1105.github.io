@@ -15,5 +15,12 @@
       <guid>https://LL1105.github.io/post/redis%E9%99%90%E6%B5%81%E4%BD%BF%E7%94%A8redis-cluster%E7%AA%81%E7%A0%B4%E5%8D%95redis%E9%99%90%E6%B5%81%E7%93%B6%E9%A2%88/</guid>
       <description>概述 当我们借助Redis实现分布式限流时，通常会根据将一个限流key放在一个Redis节点上，例如使用Redission的限流： RRateLimiter rateLimiter = redissonClient.getRateLimiter(&amp;#34;rate:limiter:key&amp;#34;); rateLimiter.trySetRate( RateType.OVERALL,</description>
     </item>
+    <item>
+      <title>缓存一致性问题全场景及其解决方案</title>
+      <link>https://LL1105.github.io/post/%E7%BC%93%E5%AD%98%E4%B8%80%E8%87%B4%E6%80%A7%E9%97%AE%E9%A2%98%E5%85%A8%E5%9C%BA%E6%99%AF%E5%8F%8A%E5%85%B6%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</link>
+      <pubDate>Thu, 30 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>https://LL1105.github.io/post/%E7%BC%93%E5%AD%98%E4%B8%80%E8%87%B4%E6%80%A7%E9%97%AE%E9%A2%98%E5%85%A8%E5%9C%BA%E6%99%AF%E5%8F%8A%E5%85%B6%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</guid>
+      <description>缓存双写一致性 缓存双写一致性是分布式系统中处理缓存（如Redis、Memcached）与数据库（如MySQL）数据同步问题的核心挑战，指在对</description>
+    </item>
   </channel>
 </rss>

@@ -101,18 +101,6 @@
                     </li>
                     
                         
-                        <li>
-                            <a href="/categories/life/">life</a>
-                        </li>
-                        
-                        <li>
-                            <a href="/categories/tech/">tech</a>
-                        </li>
-                        
-                        <li>
-                            <a href="/categories/tips/">tips</a>
-                        </li>
-                        
                     
                     
 		    
@@ -222,7 +210,7 @@
                 
                 <h1 id="前言">前言</h1>
 <p>在Spring MVC中，处理一个Web请求的流程被设计得非常清晰且高效，从客户端的请求发送到最终的响应返回，整个过程涵盖了多个核心组件的协作。理解这些组件的工作机制及其之间的交互，是掌握Spring MVC的重要基础。</p>
-<p>当用户发出HTTP请求时，Spring MVC会通过一系列步骤来处理该请求，并生成对应的响应。这个处理流程主要包括以下关键阶段：</p>
+<p>用户发出HTTP请求时，Spring MVC会通过一系列步骤来处理该请求，并生成对应的响应。这个处理流程主要包括以下关键阶段：</p>
 <ol>
 <li><strong>前端控制器（DispatcherServlet）</strong>：Spring MVC的核心，它负责接收所有进入的请求，并协调其他组件进行处理。</li>
 <li><strong>处理器映射（Handler Mapping）</strong>：用于确定具体的处理器（Controller）来处理当前请求。</li>
@@ -236,17 +224,13 @@
 <p>
   <img src="/img/SpringMVC%e6%9e%b6%e6%9e%84.png" alt="">
 
-
-<a href="https://www.bilibili.com/video/BV1e7izYhETP/?spm_id_from=333.1007.tianma.50-3-197.click&amp;vd_source=9910abaf8f354c2b432e475482f200eb">
-  <img src="" alt="视频标题">
-
-</a></p>
+</p>
 <p>我们知道SpringMVC是运行在Web容器（Tomcat、Jetty等）中的，而SpringMVC的核心处理器就是<code>DispatcherServlet</code> ，那么<code>DispatcherServlet</code> 是如何接收到要处理的Http请求的呢？</p>
 <p>实际上，它继承了<code>FrameworkServlet</code> ，而<code>FrameworkServlet</code> 又继承了<code>HttpServlet</code> ，当Web容器收到Http请求后，会将它们发送给Servlet，并调用Servlet的<code>service()</code>方法来处理它们。</p>
 <p>然而<code>FrameworkServlet</code>中定义了<code>service</code>方法，所以<code>DispatcherServlet</code>实际上调用的就是它父类的<code>service</code>方法，<code>service</code>方法中又调用了<code>processRequest</code>方法，而这些都是在父类<code>FrameworkServlet</code>中完成的，接下来<code>processRequest</code>方法调用了<code>doService</code>方法，就交给了子类<code>DispatcherServlet</code>来处理，而SpringMVC的核心处理流程就从<code>doService</code>方法开始了。</p>
 <p>先给大家看下<code>DispatcherServlet</code>的调用时序图（比较丑陋，大家将就看看），时序图忽略了<code>doService</code>之前的流程，所以给大家在上面梳理了一下，接下来就只关注<code>doService</code>方法开始。</p>
 <p>
-  <img src="SpringMVC%e8%b0%83%e7%94%a8%e6%97%b6%e5%ba%8f%e5%9b%be.png" alt="">
+  <img src="static/img/SpringMVC%e8%b0%83%e7%94%a8%e6%97%b6%e5%ba%8f%e5%9b%be.png" alt="">
 
 </p>
 <p>看图我们可以知道，实际上<code>doService</code>方法并没有控制各个组件进行处理，而是调用了<code>doDispatch</code>方法，<code>doService</code>只是对Request对象进行了一些处理，比如设置一些属性值。</p>
@@ -420,7 +404,7 @@
                     
                     
                     <li class="next">
-                        <a href="/post/redis%E9%99%90%E6%B5%81%E4%BD%BF%E7%94%A8redis-cluster%E7%AA%81%E7%A0%B4%E5%8D%95redis%E9%99%90%E6%B5%81%E7%93%B6%E9%A2%88/" data-toggle="tooltip" data-placement="top" title="Redis限流——使用Redis Cluster突破单Redis限流瓶颈">Next
+                        <a href="/post/ddos%E6%94%BB%E5%87%BB%E6%9C%89%E5%93%AA%E4%BA%9B/" data-toggle="tooltip" data-placement="top" title="DDos攻击有哪些">Next
                             Post &rarr;</a>
                     </li>
                     
@@ -503,28 +487,10 @@
                         
                         
                         
-                        <a href="/tags/docker" title="docker">
-                            docker
-                        </a>
                         
                         
-                        
-                        
-                        
-                        <a href="/tags/istio" title="istio">
-                            istio
-                        </a>
-                        
-                        
-                        
-                        <a href="/tags/kubernetes" title="kubernetes">
-                            kubernetes
-                        </a>
-                        
-                        
-                        
-                        <a href="/tags/microservice" title="microservice">
-                            microservice
+                        <a href="/tags/redis" title="redis">
+                            redis
                         </a>
                         
                         
@@ -533,31 +499,13 @@
                         
                         
                         
-                        <a href="/tags/security" title="security">
-                            security
+                        
+                        
+                        
+                        
+                        <a href="/tags/%E7%BD%91%E7%BB%9C" title="网络">
+                            网络
                         </a>
-                        
-                        
-                        
-                        <a href="/tags/service-mesh" title="service mesh">
-                            service mesh
-                        </a>
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        <a href="/tags/tips" title="tips">
-                            tips
-                        </a>
-                        
-                        
-                        
-                        
-                        
-                        
                         
                         
                         

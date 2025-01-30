@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta property="og:site_name" content="TingYu Coding Blog">
+    <meta property="og:type" content="article">
+
+    
+    <meta property="og:image" content="https://LL1105.github.io//img/bg.jpeg">
+    <meta property="twitter:image" content="https://LL1105.github.io//img/bg.jpeg" />
+    
+
+    
+    <meta name="title" content="DDos攻击有哪些" />
+    <meta property="og:title" content="DDos攻击有哪些" />
+    <meta property="twitter:title" content="DDos攻击有哪些" />
+    
+
+    
+    <meta name="description" content="">
+    <meta property="og:description" content="" />
+    <meta property="twitter:description" content="" />
+    
+
+    
+    <meta property="twitter:card" content="summary" />
+    
+    
+
+    <meta name="keyword"  content="博客">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>DDos攻击有哪些 | </title>
+
+    <link rel="canonical" href="/post/ddos%E6%94%BB%E5%87%BB%E6%9C%89%E5%93%AA%E4%BA%9B/">
+
+    
+    
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="/css/hugo-theme-cleanwhite.min.css">
+
+    
+    <link rel="stylesheet" href="/css/zanshang.css">
+
+    
+    <link rel="stylesheet" href="/css/font-awesome.all.min.css">
+
+    
+    
+
+    
+    <script src="/js/jquery.min.js"></script>
+
+    
+    <script src="/js/bootstrap.min.js"></script>
+
+    
+    <script src="/js/hux-blog.min.js"></script>
+
+    
+    <script src="/js/lazysizes.min.js"></script>
+
+    
+    
+
+</head>
+
+
+
+
+
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">TingYu Coding Blog</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">All Posts</a>
+                    </li>
+                    
+                        
+                    
+                    
+		    
+                        <li><a href="/archive//">ARCHIVE</a></li>
+                    
+                        <li><a href="/about//">ABOUT</a></li>
+                    
+		            <li>
+                        <a href="/search"><i class="fa fa-search"></i></a>
+		           </li>
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/img/bg.jpeg')
+    }
+</style>
+
+<header class="intro-header" >
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/%E7%BD%91%E7%BB%9C" title="网络">
+                            网络
+                        </a>
+                        
+                    </div>
+                    <h1>DDos攻击有哪些</h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+                        
+                            Posted by 
+                            
+                                MJJ
+                             
+                            on 
+                            Wednesday, January 1, 2025
+                            
+                            
+                            
+                            
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+<article>
+    <div class="container">
+        <div class="row">
+
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                
+                <p>DDoS（分布式拒绝服务）攻击是指攻击者通过大量分布在不同地方的计算机，向目标服务器或网络发起攻击，耗尽其资源，导致目标无法正常为合法用户提供服务。DDoS 攻击有许多类型，每种类型针对不同的层面进行攻击。以下是一些常见的 DDoS 攻击类型的详细讲解以及相应的应对措施。</p>
+<h3 id="1-流量消耗型攻击volume-based-attacks"><strong>1. 流量消耗型攻击（Volume-based attacks）</strong></h3>
+<h4 id="1-udp-flood"><strong>(1) UDP Flood</strong></h4>
+<ul>
+<li><strong>工作原理</strong>：
+<ul>
+<li>攻击者向目标服务器发送大量的 <strong>UDP（用户数据报协议）</strong> 数据包，通常是伪造的请求数据包。由于 UDP 是无连接的协议，服务器无法验证请求的来源。</li>
+<li>目标服务器收到 UDP 数据包后，会根据请求进行处理并回应，这会消耗大量带宽和计算资源。</li>
+</ul>
+</li>
+<li><strong>影响</strong>：
+<ul>
+<li>消耗带宽和资源，导致目标服务器无法处理正常的请求，服务被中断。</li>
+</ul>
+</li>
+<li><strong>防御手段</strong>：
+<ul>
+<li><strong>防火墙过滤</strong>：可以配置防火墙丢弃无效的 UDP 数据包，尤其是没有合法目的地的流量。</li>
+<li><strong>流量分析和速率限制</strong>：监控网络流量，设置阈值，自动检测并限制流量。</li>
+<li><strong>基于状态的过滤</strong>：仅允许特定端口或协议的 UDP 数据包，减少不必要的流量。</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-icmp-flood"><strong>(2) ICMP Flood</strong></h4>
+<ul>
+<li><strong>工作原理</strong>：
+<ul>
+<li>攻击者发送大量的 <strong>ICMP Echo Request</strong>（ping 请求）包，伪造源 IP 地址，使目标服务器需要响应大量的 ICMP Echo Reply（回响响应）。</li>
+<li>目标服务器的带宽和资源被消耗，甚至可能导致网络阻塞。</li>
+</ul>
+</li>
+<li><strong>影响</strong>：
+<ul>
+<li>消耗服务器带宽和处理能力，尤其是当目标服务器无法区分合法请求时。</li>
+</ul>
+</li>
+<li><strong>防御手段</strong>：
+<ul>
+<li><strong>ICMP 请求速率限制</strong>：通过防火墙或路由器限制每秒允许的 ICMP 请求数量。</li>
+<li><strong>源地址验证</strong>：防止伪造源地址的 ICMP 包。</li>
+<li><strong>禁止 ICMP 响应</strong>：对 ICMP Echo 请求进行拦截，禁止 ICMP 回应。</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-dns-amplification"><strong>(3) DNS Amplification</strong></h4>
+<ul>
+<li><strong>工作原理</strong>：
+<ul>
+<li>攻击者向开放的 DNS 服务器发送伪造的 DNS 请求，源地址伪装为目标的 IP 地址。</li>
+<li>DNS 服务器会将查询结果（通常比请求更大）发送给目标，从而放大流量。</li>
+</ul>
+</li>
+<li><strong>影响</strong>：
+<ul>
+<li>由于 DNS 响应比请求数据包要大得多，因此攻击者能够用较小的请求产生大量的响应，迅速耗尽目标的带宽和资源。</li>
+</ul>
+</li>
+<li><strong>防御手段</strong>：
+<ul>
+<li><strong>禁用开放 DNS 解析</strong>：配置 DNS 服务器仅响应可信的 IP 地址请求。</li>
+<li><strong>DNS 请求速率限制</strong>：限制 DNS 查询的频率。</li>
+<li><strong>使用 DNSSEC</strong>：启用 DNS 安全扩展（DNSSEC）来增强 DNS 协议的安全性。</li>
+<li><strong>流量清洗服务</strong>：使用第三方服务清洗恶意流量，确保只将合法的流量送达目标服务器。</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-协议型攻击protocol-based-attacks"><strong>2. 协议型攻击（Protocol-based attacks）</strong></h3>
+<h4 id="1-syn-flood"><strong>(1) SYN Flood</strong></h4>
+<ul>
+<li><strong>工作原理</strong>：
+<ul>
+<li>攻击者发送大量的 <strong>SYN</strong>（同步）请求包，伪造源 IP 地址。目标服务器接收到 SYN 请求后，返回一个 SYN-ACK（同步确认）响应，等待 ACK（确认）响应来建立连接。</li>
+<li>攻击者不回应 SYN-ACK 响应，导致目标服务器无法完成 TCP 三次握手，保持连接在半打开状态，消耗大量资源。</li>
+</ul>
+</li>
+<li><strong>影响</strong>：
+<ul>
+<li>服务器为每个半连接分配内存和处理能力，耗尽资源，导致无法处理正常的连接请求。</li>
+</ul>
+</li>
+<li><strong>防御手段</strong>：
+<ul>
+<li><strong>SYN Cookies</strong>：通过使用 SYN Cookies 技术来避免为每个半连接分配资源，防止资源耗尽。</li>
+<li><strong>连接队列限制</strong>：减少每个服务器能够处理的并发连接数。</li>
+<li><strong>防火墙和负载均衡器</strong>：启用防火墙来过滤不必要的 SYN 请求，并使用负载均衡器分散流量。</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-ack-flood"><strong>(2) ACK Flood</strong></h4>
+<ul>
+<li><strong>工作原理</strong>：
+<ul>
+<li>攻击者发送大量的 <strong>ACK</strong>（确认）包，这些包会被目标服务器认为是已经建立连接的请求。</li>
+<li>服务器会消耗大量资源来解析这些包，尝试响应它们，而实际上这些 ACK 包没有合法的连接状态。</li>
+</ul>
+</li>
+<li><strong>影响</strong>：
+<ul>
+<li>消耗服务器的计算资源，影响正常的连接请求。</li>
+</ul>
+</li>
+<li><strong>防御手段</strong>：
+<ul>
+<li><strong>基于状态的防火墙</strong>：通过防火墙或其他网络设备过滤非法 ACK 包。</li>
+<li><strong>速率限制</strong>：限制每个 IP 地址的 ACK 包的发送速率。</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-rst-flood"><strong>(3) RST Flood</strong></h4>
+<ul>
+<li><strong>工作原理</strong>：
+<ul>
+<li>攻击者通过发送大量的 <strong>RST（重置）</strong> 包，强制断开目标服务器和客户端之间的连接。</li>
+<li>目标服务器将花费资源来处理中断的连接。</li>
+</ul>
+</li>
+<li><strong>影响</strong>：
+<ul>
+<li>频繁的连接中断和重新建立会导致服务器资源耗尽。</li>
+</ul>
+</li>
+<li><strong>防御手段</strong>：
+<ul>
+<li><strong>连接状态检查</strong>：对于收到的 RST 包进行验证，确保它们是合法的。</li>
+<li><strong>流量分析</strong>：检测是否有异常的 RST 包，并对其进行过滤。</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-应用层攻击application-layer-attacks"><strong>3. 应用层攻击（Application Layer attacks）</strong></h3>
+<h4 id="1-http-flood"><strong>(1) HTTP Flood</strong></h4>
+<ul>
+<li><strong>工作原理</strong>：
+<ul>
+<li>攻击者发送大量的 <strong>HTTP 请求</strong>（例如 GET 或 POST 请求）到目标 Web 服务器，通常是访问页面或提交表单，模拟合法的用户行为。</li>
+<li>由于 HTTP 请求需要 Web 服务器处理，导致服务器消耗大量的计算资源和内存，无法为正常用户提供服务。</li>
+</ul>
+</li>
+<li><strong>影响</strong>：
+<ul>
+<li>对 Web 服务器的资源（如 CPU 和内存）进行大量消耗，使其无法响应正常的请求。</li>
+</ul>
+</li>
+<li><strong>防御手段</strong>：
+<ul>
+<li><strong>WAF（Web 应用防火墙）</strong>：部署 WAF 对 HTTP 请求进行检查和过滤，阻止恶意请求。</li>
+<li><strong>速率限制</strong>：限制每个 IP 的请求频率，防止单个用户发起大量请求。</li>
+<li><strong>行为分析</strong>：通过分析用户行为来识别并拦截恶意流量。</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-slowloris"><strong>(2) Slowloris</strong></h4>
+<ul>
+<li><strong>工作原理</strong>：
+<ul>
+<li>攻击者通过发送部分的 HTTP 请求，保持连接处于未完成的状态，目标服务器无法完全关闭连接或处理新的请求。</li>
+<li>攻击者通过慢速发送数据保持连接活跃，使目标服务器的连接池耗尽。</li>
+</ul>
+</li>
+<li><strong>影响</strong>：
+<ul>
+<li>服务器的连接池资源被耗尽，无法处理新的请求。</li>
+</ul>
+</li>
+<li><strong>防御手段</strong>：
+<ul>
+<li><strong>连接超时设置</strong>：配置连接超时时间，自动断开长时间未完成的连接。</li>
+<li><strong>反向代理和负载均衡</strong>：使用反向代理和负载均衡器来分散负载，并防止单一服务器资源耗尽。</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-dns-query-flood"><strong>(3) DNS Query Flood</strong></h4>
+<ul>
+<li><strong>工作原理</strong>：
+<ul>
+<li>攻击者向目标 DNS 服务器发送大量查询请求，导致服务器消耗大量资源并无法响应合法请求。</li>
+</ul>
+</li>
+<li><strong>影响</strong>：
+<ul>
+<li>目标 DNS 服务器无法为正常用户提供域名解析服务，导致 Web 服务无法访问。</li>
+</ul>
+</li>
+<li><strong>防御手段</strong>：
+<ul>
+<li><strong>DNSSEC</strong>：启用 DNS 安全扩展，增加 DNS 的安全性。</li>
+<li><strong>流量监控和速率限制</strong>：监控 DNS 请求的频率，限制每秒查询次数。</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-混合型攻击hybrid-attacks"><strong>4. 混合型攻击（Hybrid Attacks）</strong></h3>
+<h4 id="1-zero-day-ddos-attacks"><strong>(1) Zero-day DDoS Attacks</strong></h4>
+<ul>
+<li><strong>工作原理</strong>：
+<ul>
+<li>利用目标系统未修复的漏洞进行攻击。这些漏洞通常是未知的，难以防御。</li>
+</ul>
+</li>
+<li><strong>防御手段</strong>：
+<ul>
+<li><strong>定期安全更新和补丁管理</strong>：定期更新软件和操作系统，以修复漏洞。</li>
+<li><strong>入侵检测系统（IDS）</strong>：部署 IDS 来识别和响应异常行为。</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-application--network-attack"><strong>(2) Application + Network Attack</strong></h4>
+<ul>
+<li><strong>工作原理</strong>：
+<ul>
+<li>同时发起多个层面的攻击，例如网络层（如 SYN Flood）和应用层（如 HTTP Flood）攻击。</li>
+</ul>
+</li>
+<li><strong>防御手段</strong>：
+<ul>
+<li>结合多层防御技术，如 WAF、负载均衡、防火墙、DDoS 防护服务等，增强防御能力。</li>
+</ul>
+</li>
+</ul>
+<h3 id="总结"><strong>总结</strong></h3>
+<p>DDoS 攻击类型各异，防御手段也需要根据不同攻击类型进行针对性的部署。常见的防御策略包括使用防火墙、入侵检测系统、负载均衡器、流量清洗服务等手段。加强流量监控，设置合适的速率限制，定期修补系统漏洞，综合使用多种防护措施，才能有效应对 DDoS 攻击。</p>
+
+
+                
+
+                
+                <hr>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/post/%E8%AF%A6%E8%A7%A3springmvc%E5%A4%84%E7%90%86%E6%B5%81%E7%A8%8B/" data-toggle="tooltip" data-placement="top" title="详解SpringMVC处理流程">&larr;
+                            Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/post/%E7%BC%93%E5%AD%98%E4%B8%80%E8%87%B4%E6%80%A7%E9%97%AE%E9%A2%98%E5%85%A8%E5%9C%BA%E6%99%AF%E5%8F%8A%E5%85%B6%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" data-toggle="tooltip" data-placement="top" title="缓存一致性问题全场景及其解决方案">Next
+                            Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+                
+
+                
+<script src="https://giscus.app/client.js"
+        data-repo="helloworld-mjj/helloworld-mjj.github.io"
+        data-repo-id="R_kgDOL_6yNw"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOL_6yN84CiIBs"
+        data-mapping="pathname"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-theme="light"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
+
+<div id="disqus-comment"></div>
+<div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "giscus" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+            </div>
+
+            
+            
+            <div class="
+                col-lg-2 col-lg-offset-0
+                visible-lg-block
+                sidebar-container
+                catalog-container">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>
+                        <a class="catalog-toggle" href="#">CATALOG</a>
+                    </h5>
+                    <ul class="catalog-body"></ul>
+                </div>
+            </div>
+            
+
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/redis" title="redis">
+                            redis
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/%E7%BD%91%E7%BB%9C" title="网络">
+                            网络
+                        </a>
+                        
+                        
+                        
+                        
+                    </div>
+                </section>
+                
+
+                
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">                  
+                    
+                    
+                    
+                    
+                    
+
+		            
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+            
+            
+            
+           
+             </ul>
+		<p class="copyright text-muted">
+                    Copyright &copy; TingYu Coding Blog 2025
+                    
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<script>
+    function loadAsync(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+
+<script>
+    
+    if($('#tag_cloud').length !== 0){
+        loadAsync("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+
+<script>
+    loadAsync("https://cdn.jsdelivr.net/npm/fastclick@1.0.6/lib/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+
+
+
+<script type="text/javascript">
+    function generateCatalog(selector) {
+
+        
+        
+        
+        
+            _containerSelector = 'div.post-container'
+        
+
+        
+        var P = $(_containerSelector), a, n, t, l, i, c;
+        a = P.find('h1,h2,h3,h4,h5,h6');
+
+        
+        $(selector).html('')
+
+        
+        a.each(function () {
+            n = $(this).prop('tagName').toLowerCase();
+            i = "#" + $(this).prop('id');
+            t = $(this).text();
+            c = $('<a href="' + i + '" rel="nofollow">' + t + '</a>');
+            l = $('<li class="' + n + '_nav"></li>').append(c);
+            $(selector).append(l);
+        });
+        return true;
+    }
+
+    generateCatalog(".catalog-body");
+
+    
+    $(".catalog-toggle").click((function (e) {
+        e.preventDefault();
+        $('.side-catalog').toggleClass("fold")
+    }))
+
+    
+
+
+    loadAsync("\/js\/jquery.nav.js", function () {
+        $('.catalog-body').onePageNav({
+            currentClass: "active",
+            changeHash: !1,
+            easing: "swing",
+            filter: "",
+            scrollSpeed: 700,
+            scrollOffset: 0,
+            scrollThreshold: .2,
+            begin: null,
+            end: null,
+            scrollChange: null,
+            padding: 80
+        });
+    });
+</script>
+
+
+
+
+
+
+</body>
+</html>

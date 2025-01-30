@@ -10,9 +10,9 @@
     <atom:link href="https://LL1105.github.io/tags/springmvc/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>详解SpringMVC处理流程</title>
-      <link>https://LL1105.github.io/post/mypost/%E8%AF%A6%E8%A7%A3springmvc%E5%A4%84%E7%90%86%E6%B5%81%E7%A8%8B/</link>
+      <link>https://LL1105.github.io/post/%E8%AF%A6%E8%A7%A3springmvc%E5%A4%84%E7%90%86%E6%B5%81%E7%A8%8B/</link>
       <pubDate>Sun, 15 Sep 2024 00:00:00 +0000</pubDate>
-      <guid>https://LL1105.github.io/post/mypost/%E8%AF%A6%E8%A7%A3springmvc%E5%A4%84%E7%90%86%E6%B5%81%E7%A8%8B/</guid>
+      <guid>https://LL1105.github.io/post/%E8%AF%A6%E8%A7%A3springmvc%E5%A4%84%E7%90%86%E6%B5%81%E7%A8%8B/</guid>
       <description>前言 在Spring MVC中，处理一个Web请求的流程被设计得非常清晰且高效，从客户端的请求发送到最终的响应返回，整个过程涵盖了多个核心组件的</description>
     </item>
   </channel>
