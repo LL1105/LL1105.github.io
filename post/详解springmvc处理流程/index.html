@@ -230,7 +230,7 @@
 <p>然而<code>FrameworkServlet</code>中定义了<code>service</code>方法，所以<code>DispatcherServlet</code>实际上调用的就是它父类的<code>service</code>方法，<code>service</code>方法中又调用了<code>processRequest</code>方法，而这些都是在父类<code>FrameworkServlet</code>中完成的，接下来<code>processRequest</code>方法调用了<code>doService</code>方法，就交给了子类<code>DispatcherServlet</code>来处理，而SpringMVC的核心处理流程就从<code>doService</code>方法开始了。</p>
 <p>先给大家看下<code>DispatcherServlet</code>的调用时序图（比较丑陋，大家将就看看），时序图忽略了<code>doService</code>之前的流程，所以给大家在上面梳理了一下，接下来就只关注<code>doService</code>方法开始。</p>
 <p>
-  <img src="static/img/SpringMVC%e8%b0%83%e7%94%a8%e6%97%b6%e5%ba%8f%e5%9b%be.png" alt="">
+  <img src="/img/SpringMVC%e8%b0%83%e7%94%a8%e6%97%b6%e5%ba%8f%e5%9b%be.png" alt="">
 
 </p>
 <p>看图我们可以知道，实际上<code>doService</code>方法并没有控制各个组件进行处理，而是调用了<code>doDispatch</code>方法，<code>doService</code>只是对Request对象进行了一些处理，比如设置一些属性值。</p>
