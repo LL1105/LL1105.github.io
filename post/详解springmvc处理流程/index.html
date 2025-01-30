@@ -234,9 +234,10 @@
 <h1 id="整体流程">整体流程</h1>
 <p>大家先看看这张图对大致流程进行一个了解（后边文章在看的时候可以结合这张图）</p>
 <p>
-  <img src="SpringMVC%e6%9e%b6%e6%9e%84.png" alt="">
+  <img src="/img/SpringMVC%e6%9e%b6%e6%9e%84.png" alt="">
 
-</p>
+
+<a href="https://www.bilibili.com/video/BV1e7izYhETP/?spm_id_from=333.1007.tianma.50-3-197.click&amp;vd_source=9910abaf8f354c2b432e475482f200eb"></a></p>
 <p>我们知道SpringMVC是运行在Web容器（Tomcat、Jetty等）中的，而SpringMVC的核心处理器就是<code>DispatcherServlet</code> ，那么<code>DispatcherServlet</code> 是如何接收到要处理的Http请求的呢？</p>
 <p>实际上，它继承了<code>FrameworkServlet</code> ，而<code>FrameworkServlet</code> 又继承了<code>HttpServlet</code> ，当Web容器收到Http请求后，会将它们发送给Servlet，并调用Servlet的<code>service()</code>方法来处理它们。</p>
 <p>然而<code>FrameworkServlet</code>中定义了<code>service</code>方法，所以<code>DispatcherServlet</code>实际上调用的就是它父类的<code>service</code>方法，<code>service</code>方法中又调用了<code>processRequest</code>方法，而这些都是在父类<code>FrameworkServlet</code>中完成的，接下来<code>processRequest</code>方法调用了<code>doService</code>方法，就交给了子类<code>DispatcherServlet</code>来处理，而SpringMVC的核心处理流程就从<code>doService</code>方法开始了。</p>
