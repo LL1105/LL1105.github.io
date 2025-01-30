@@ -102,6 +102,18 @@
                     </li>
                     
                         
+                        <li>
+                            <a href="/categories/life/">life</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/tech/">tech</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/tips/">tips</a>
+                        </li>
+                        
                     
                     
 		    
@@ -182,20 +194,24 @@
 <div data-pagefind-ignore="all">
 
 <div class="post-preview">
-    <a href="https://LL1105.github.io/post/assert/oebps/text/07/">
+    <a href="https://LL1105.github.io/2018/05/23/istio-auto-injection-with-webhook/">
         <h2 class="post-title">
-            
+            Istio Sidecar自动注入原理
         </h2>
+	
+        <h3 class="post-subtitle">
+            Kubernetes webhook扩展机制解析
+        </h3>
 	
         <div class="post-content-preview">
 	
-            <?xml version="1.0" encoding="utf-8"?> <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"> 06 | 复杂度来源：可扩展性 06 | 复杂度来源：可扩展性 复杂度来源前面已经讲了高性能和高可用，今天来聊聊可扩展性。 可扩展性指系统
-       
+            Kubernets 1.9版本引入了Admission Webhook(web 回调)扩展机制，通过Webhook,开发者可以非常灵活地对Kubernets API Server的功能进行扩展，在API Server创建资源时对资源进行验证或者修改。 Istio 0.7版本就利用了Kubernets webhook实现了sidecar的自动注入。
+        
         </div>
     </a>
     <p class="post-meta">
     
-        Posted by MJJ&#39;s Blog on Monday, January 1, 0001
+        Posted by     &#34;赵化冰&#34; on Wednesday, May 23, 2018
         
         
     
@@ -205,20 +221,26 @@
 <hr>
 
 <div class="post-preview">
-    <a href="https://LL1105.github.io/post/assert/oebps/text/08/">
+    <a href="https://LL1105.github.io/2018/05/01/may-day-jiulonghu/">
         <h2 class="post-title">
-            
+            川西秘境探险
         </h2>
+	
+        <h3 class="post-subtitle">
+            2018五一甘堡藏寨，九龙湖自驾游记
+        </h3>
 	
         <div class="post-content-preview">
 	
-            <?xml version="1.0" encoding="utf-8"?> <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"> 07 | 复杂度来源：低成本、安全、规模 07 | 复杂度来源：低成本、安全、规模 关于复杂度来源，前面的专栏已经讲了高性能、高可用和可
+            <h2 id="寻浮云牧场不遇">寻浮云牧场不遇</h2>
+<p>五一节前的一周内，几个朋友就纷纷坐不住了，一个二个不再安心上班，开始在微信群里讨论过节要到哪里耍。
+大家思来想去，最后决定还是去理县方向。因为根据多年自驾的经验，只要出了汶川，沿途都是风景。</p>
        
         </div>
     </a>
     <p class="post-meta">
     
-        Posted by MJJ&#39;s Blog on Monday, January 1, 0001
+        Posted by 赵化冰 on Tuesday, May 1, 2018
         
         
     
@@ -228,20 +250,24 @@
 <hr>
 
 <div class="post-preview">
-    <a href="https://LL1105.github.io/post/assert/oebps/text/09/">
+    <a href="https://LL1105.github.io/2018/04/16/using-helm-to-deploy-to-kubernetes/">
         <h2 class="post-title">
-            
+            Helm介绍
         </h2>
+	
+        <h3 class="post-subtitle">
+            强大的Kubernetes包管理工具
+        </h3>
 	
         <div class="post-content-preview">
 	
-            <?xml version="1.0" encoding="utf-8"?> <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"> 08 | 架构设计三原则 08 | 架构设计三原则 前面几期专栏，我跟你系统的聊了架构设计的主要目的是为了解决软件系统复杂度带来的问题，
-       
+            Helm是Kubernetes生态系统中的一个软件包管理工具。本文将介绍为何要使用Helm进行Kubernetes软件包管理，澄清Helm中使用到的相关概念，并通过一个具体的示例学习如何使用Helm打包，分发，安装，升级及回退Kubernetes应用。
+        
         </div>
     </a>
     <p class="post-meta">
     
-        Posted by MJJ&#39;s Blog on Monday, January 1, 0001
+        Posted by 赵化冰 on Monday, April 16, 2018
         
         
     
@@ -251,20 +277,20 @@
 <hr>
 
 <div class="post-preview">
-    <a href="https://LL1105.github.io/post/assert/oebps/text/10/">
+    <a href="https://LL1105.github.io/2018/04/11/service-mesh-vs-api-gateway/">
         <h2 class="post-title">
-            
+            Service Mesh 和 API Gateway的关系探讨（译文）
         </h2>
 	
         <div class="post-content-preview">
 	
-            <?xml version="1.0" encoding="utf-8"?> <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"> 09 | 架构设计原则案例 09 | 架构设计原则案例 周二，我给你介绍了架构设计的三条核心原则，先复习一下：合适原则、简单原则和演化原
-       
+            API Gateway和Service Mesh的关系是我最近一直在思考的问题，也和同事及社区的朋友之间进行了一些讨论。这篇短文很清晰地总结了两者之间的相似之处以及这两者在微服务架构中的不同用途。
+        
         </div>
     </a>
     <p class="post-meta">
     
-        Posted by MJJ&#39;s Blog on Monday, January 1, 0001
+        Posted by 赵化冰 on Wednesday, April 11, 2018
         
         
     
@@ -274,20 +300,24 @@
 <hr>
 
 <div class="post-preview">
-    <a href="https://LL1105.github.io/post/assert/oebps/text/11/">
+    <a href="https://LL1105.github.io/2018/03/29/what-is-service-mesh-and-istio/">
         <h2 class="post-title">
-            
+            谈谈微服务架构中的基础设施：Service Mesh与Istio
         </h2>
+	
+        <h3 class="post-subtitle">
+            Service Mesh模式及Istio开源项目介绍
+        </h3>
 	
         <div class="post-content-preview">
 	
-            <?xml version="1.0" encoding="utf-8"?> <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"> 10 | 架构设计流程：识别复杂度 10 | 架构设计流程：识别复杂度 从今天开始，我将分 4 期，结合复杂度来源和架构设计原则，通过一个模
-       
+            作为一种架构模式，微服务将复杂系统切分为数十乃至上百个小服务，每个服务负责实现一个独立的业务逻辑。这些小服务易于被小型的软件工程师团队所理解和修改，并带来了语言和框架选择灵活性，缩短应用开发上线时间，可根据不同的工作负载和资源要求对服务进行独立缩扩容等优势。另一方面，当应用被拆分为多个微服务进程后，进程内的方法调用变成了了进程间的远程调用。引入了对大量服务的连接、管理和监控的复杂性,本文介绍了Service Mesh模式如何应对微服务架构的这些挑战，以及Service Mesh的明星开源项目Istio。
+        
         </div>
     </a>
     <p class="post-meta">
     
-        Posted by MJJ&#39;s Blog on Monday, January 1, 0001
+        Posted by 赵化冰 on Thursday, March 29, 2018
         
         
     
@@ -297,20 +327,20 @@
 <hr>
 
 <div class="post-preview">
-    <a href="https://LL1105.github.io/post/assert/oebps/text/12/">
+    <a href="https://LL1105.github.io/2018/03/13/use-docker-behind-http-proxy/">
         <h2 class="post-title">
-            
+            如何配置docker使用HTTP代理
         </h2>
 	
         <div class="post-content-preview">
 	
-            <?xml version="1.0" encoding="utf-8"?> <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"> 11 | 架构设计流程：设计备选方案 11 | 架构设计流程：设计备选方案 上一期我讲了架构设计流程第 1 步识别复杂度，确定了系统面临的主
-       
+            如何配置docker使用HTTP代理
+        
         </div>
     </a>
     <p class="post-meta">
     
-        Posted by MJJ&#39;s Blog on Monday, January 1, 0001
+        Posted by 赵化冰 on Tuesday, March 13, 2018
         
         
     
@@ -320,20 +350,20 @@
 <hr>
 
 <div class="post-preview">
-    <a href="https://LL1105.github.io/post/assert/oebps/text/13/">
+    <a href="https://LL1105.github.io/2018/02/09/vim-tips/">
         <h2 class="post-title">
-            
+            Vim Tips
         </h2>
 	
         <div class="post-content-preview">
 	
-            <?xml version="1.0" encoding="utf-8"?> <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"> 12 | 架构设计流程：评估和选择备选方案 12 | 架构设计流程：评估和选择备选方案 上一期我讲了设计备选方案，在完成备选方案设计后，
-       
+            Vim Tips and tricks
+        
         </div>
     </a>
     <p class="post-meta">
     
-        Posted by MJJ&#39;s Blog on Monday, January 1, 0001
+        Posted by 赵化冰 on Friday, February 9, 2018
         
         
     
@@ -343,20 +373,20 @@
 <hr>
 
 <div class="post-preview">
-    <a href="https://LL1105.github.io/post/assert/oebps/text/14/">
+    <a href="https://LL1105.github.io/2018/02/09/docker-without-sudo/">
         <h2 class="post-title">
-            
+            如何使用非root用户执行docker命令
         </h2>
 	
         <div class="post-content-preview">
 	
-            <?xml version="1.0" encoding="utf-8"?> <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"> 13 | 架构设计流程：详细方案设计 13 | 架构设计流程：详细方案设计 完成备选方案的设计和选择后，我们终于可以长出一口气，因为整个
-       
+            如何使用非root用户执行docker命令
+        
         </div>
     </a>
     <p class="post-meta">
     
-        Posted by MJJ&#39;s Blog on Monday, January 1, 0001
+        Posted by 赵化冰 on Friday, February 9, 2018
         
         
     
@@ -366,20 +396,24 @@
 <hr>
 
 <div class="post-preview">
-    <a href="https://LL1105.github.io/post/assert/oebps/text/15/">
+    <a href="https://LL1105.github.io/2018/05/22/user_authentication_authorization/">
         <h2 class="post-title">
-            
+            如何构建安全的微服务应用？
         </h2>
+	
+        <h3 class="post-subtitle">
+            微服务架构下的认证和鉴权方案探讨
+        </h3>
 	
         <div class="post-content-preview">
 	
-            <?xml version="1.0" encoding="utf-8"?> <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"> 14 | 高性能数据库集群：读写分离 14 | 高性能数据库集群：读写分离 “从 0 开始学架构”专栏已经更新了 13 期，从各个方面阐述了架构设
-       
+            微服务架构的引入为软件应用带来了诸多好处：包括小开发团队，缩短开发周期，语言选择灵活性，增强服务伸缩能力等。与此同时，也引入了分布式系统的诸多复杂问题。其中一个挑战就是如何在微服务架构中实现一个灵活，安全，高效的认证和鉴权方案。本文将尝试就此问题进行一次比较完整的探讨。
+        
         </div>
     </a>
     <p class="post-meta">
     
-        Posted by MJJ&#39;s Blog on Monday, January 1, 0001
+        Posted by 赵化冰 on Saturday, February 3, 2018
         
         
     
@@ -389,20 +423,20 @@
 <hr>
 
 <div class="post-preview">
-    <a href="https://LL1105.github.io/post/assert/oebps/text/16/">
+    <a href="https://LL1105.github.io/2018/01/02/nginmesh-install/">
         <h2 class="post-title">
-            
+            Nginx开源Service Mesh组件Nginmesh安装指南
         </h2>
 	
         <div class="post-content-preview">
 	
-            <?xml version="1.0" encoding="utf-8"?> <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"> 15 | 高性能数据库集群：分库分表 15 | 高性能数据库集群：分库分表 上期我讲了“读写分离”，读写分离分散了数据库读写操作的压力，
-       
+            Nginmesh是NGINX的Service Mesh开源项目，用于Istio服务网格平台中的数据面代理。它旨在提供七层负载均衡和服务路由功能，与Istio集成作为sidecar部署，并将以“标准，可靠和安全的方式”使得服务间通信更容易。Nginmesh在今年底已经连续发布了0.2和0.3版本，提供了服务发现，请求转发，路由规则，性能指标收集等功能。本文介绍如何采用kubeadmin安装kubernetes集群并部署Nginmesh sidecar。
+        
         </div>
     </a>
     <p class="post-meta">
     
-        Posted by MJJ&#39;s Blog on Monday, January 1, 0001
+        Posted by 赵化冰 on Tuesday, January 2, 2018
         
         
     
@@ -486,6 +520,60 @@
         <h5>FEATURED TAGS</h5>
         <div class="tags">
             
+            
+               
+            
+               
+                    <a href="/tags/docker" title="docker">
+                        docker
+                    </a>
+               
+            
+               
+            
+               
+                    <a href="/tags/istio" title="istio">
+                        istio
+                    </a>
+               
+            
+               
+                    <a href="/tags/kubernetes" title="kubernetes">
+                        kubernetes
+                    </a>
+               
+            
+               
+                    <a href="/tags/microservice" title="microservice">
+                        microservice
+                    </a>
+               
+            
+               
+            
+               
+            
+               
+                    <a href="/tags/security" title="security">
+                        security
+                    </a>
+               
+            
+               
+                    <a href="/tags/service-mesh" title="service mesh">
+                        service mesh
+                    </a>
+               
+            
+               
+            
+               
+            
+               
+                    <a href="/tags/tips" title="tips">
+                        tips
+                    </a>
+               
             
                
             

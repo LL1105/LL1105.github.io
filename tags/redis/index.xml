@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Redis on MJJ&#39;s Blog</title>
+    <link>https://LL1105.github.io/tags/redis/</link>
+    <description>Recent content in Redis on MJJ&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Thu, 30 Jan 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://LL1105.github.io/tags/redis/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Redis限流——使用Redis Cluster突破单Redis限流瓶颈</title>
+      <link>https://LL1105.github.io/post/redis%E9%99%90%E6%B5%81%E4%BD%BF%E7%94%A8redis-cluster%E7%AA%81%E7%A0%B4%E5%8D%95redis%E9%99%90%E6%B5%81%E7%93%B6%E9%A2%88/</link>
+      <pubDate>Thu, 30 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>https://LL1105.github.io/post/redis%E9%99%90%E6%B5%81%E4%BD%BF%E7%94%A8redis-cluster%E7%AA%81%E7%A0%B4%E5%8D%95redis%E9%99%90%E6%B5%81%E7%93%B6%E9%A2%88/</guid>
+      <description>概述 当我们借助Redis实现分布式限流时，通常会根据将一个限流key放在一个Redis节点上，例如使用Redission的限流： RRateLimiter rateLimiter = redissonClient.getRateLimiter(&amp;#34;rate:limiter:key&amp;#34;); rateLimiter.trySetRate( RateType.OVERALL,</description>
+    </item>
+  </channel>
+</rss>
