@@ -6,12 +6,12 @@
     <description>Recent content in 负载均衡 on TingYu Coding Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 01 Sep 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 20 Aug 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://LL1105.github.io/tags/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>带权轮询负载均衡探讨</title>
       <link>https://LL1105.github.io/post/%E5%B8%A6%E6%9D%83%E8%BD%AE%E8%AF%A2%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%AE%9E%E7%8E%B0%E6%8E%A2%E8%AE%A8/</link>
-      <pubDate>Sun, 01 Sep 2024 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 20 Aug 2024 00:00:00 +0000</pubDate>
       <guid>https://LL1105.github.io/post/%E5%B8%A6%E6%9D%83%E8%BD%AE%E8%AF%A2%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%AE%9E%E7%8E%B0%E6%8E%A2%E8%AE%A8/</guid>
       <description>带权轮询负载均衡业务场景 负载均衡是在请求资源时，当资源有多个，我们应该请求哪一个才能让资源利用率最大化的方法。 轮询是最简单粗暴的一种策略，这</description>
     </item>
