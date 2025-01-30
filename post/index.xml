@@ -57,12 +57,5 @@
       <guid>https://LL1105.github.io/post/linux%E6%98%AF%E5%A6%82%E4%BD%95%E5%88%9B%E5%BB%BA%E8%BF%9B%E7%A8%8B%E7%9A%84/</guid>
       <description>Linux的进程 首先我们看下进程的定义：进程就是处于执行期的程序。 我们知道，进程是操作系统资源分配的基本单位，每个进程有独属于自己的虚拟空间</description>
     </item>
-    <item>
-      <title></title>
-      <link>https://LL1105.github.io/post/jvm%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://LL1105.github.io/post/jvm%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8/</guid>
-      <description>Serial GC JDK6及以前的版本的默认GC，包括Serial和Serial Old Parallel GC JDK7、8的默认GC，包括新生代的Parallel Scavenge</description>
-    </item>
   </channel>
 </rss>

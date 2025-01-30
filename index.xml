@@ -65,13 +65,6 @@
       <description>关于我 欢迎大家访问我的博客网站。 若有问题请在评论区留言。 本网站使用hugo构建，主题为CleanWhite。</description>
     </item>
     <item>
-      <title></title>
-      <link>https://LL1105.github.io/post/jvm%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://LL1105.github.io/post/jvm%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8/</guid>
-      <description>Serial GC JDK6及以前的版本的默认GC，包括Serial和Serial Old Parallel GC JDK7、8的默认GC，包括新生代的Parallel Scavenge</description>
-    </item>
-    <item>
       <title>历史文章归档</title>
       <link>https://LL1105.github.io/archive/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
